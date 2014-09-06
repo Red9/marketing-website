@@ -1,0 +1,73 @@
+
+@media screen and (max-width: 690px) { // because I said so.
+	header {
+		@include flexbox; 
+		@include flex-flow(row wrap);
+
+		height: auto;
+	
+		.logo {
+			@include order(1);
+
+			width: 50%;
+			height: 50%;
+		}
+		.blurb {
+			@include order(3);
+  			
+  			background-color: $headerColor;
+  			width: 100%;
+		}
+		form {
+			@include flexbox;
+			@include order(2);
+			@include flex-flow(column nowrap);
+
+			width: 50%;
+			height: auto;
+
+			@media screen and (max-width: 480px) {
+				padding: 10px;
+
+				input[type="text"][name] { 
+					margin-bottom: 5px;
+					margin-top: 0;
+				}
+
+				button[type] {
+					margin-top: 5px;
+					margin-bottom: 0;
+				}
+
+				label {
+					display: none;
+				}
+			}
+
+
+			input[type="text"], 
+			button {
+				@include flex-grow(1);
+				margin-bottom: 10px;
+			}
+		}
+	}
+	.wave {
+		width: 100%;
+	}
+
+	// Small Screen Footer
+
+	footer {
+		border-bottom: 0;
+
+		ul {
+			@include flexbox;
+			@include justify-content(space-around);
+
+			.link {
+				margin-right: 0;
+			}
+		}
+	}
+}
