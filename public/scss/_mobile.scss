@@ -29,7 +29,8 @@
 			@media screen and (max-width: 480px) {
 				padding: 10px;
 
-				input[type="text"][name] { 
+				input[type="text"][name],
+				input[type="email"][name] { 
 					margin-bottom: 5px;
 					margin-top: 0;
 				}
@@ -46,6 +47,7 @@
 
 
 			input[type="text"], 
+			input[type="email"],
 			button {
 				@include flex-grow(1);
 				margin-bottom: 10px;

@@ -65,7 +65,7 @@ header {
 
 	.blurb {
 		height: 100%;
-		padding: 35px;
+		padding: 30px;
 		float: left;
 		width: calc(100% - 400px);
 		background: url(../img/board-and-phone.png) no-repeat;
@@ -130,7 +130,8 @@ header {
 			display: block;
 			margin: 10px 0;
 		}
-		input[type="text"] {
+		input[type="text"],
+		input[type="email"] {
 			font-family: $helvetica;
 			background-color: $headerColor;
 			height: 30px;
