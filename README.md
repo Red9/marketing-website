@@ -10,7 +10,7 @@ author "Merwan Rodriguez - merwan@gmail.com"
 
 
 ```
-#!upstart
+#!bash
 
 start on started mountall
 stop on shutdown
