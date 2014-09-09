@@ -8,6 +8,10 @@ Use the following Upstart script if you want to run the server as a service (you
 description "node.js server - red9 marketing website"
 author "Merwan Rodriguez - merwan@gmail.com"
 
+
+```
+#!upstart
+
 start on started mountall
 stop on shutdown
 
@@ -25,6 +29,8 @@ post-start script
         #Need a notifier script here
 end script
 
+```
+
 
 #Export list of emails in CSV format 
 
@@ -33,5 +39,3 @@ To do this, simply run this command:
 `echo "COPY (SELECT * FROM registrations) TO STDOUT With CSV HEADER;" | sudo -u postgres psql red9marketing | cat > ~/registrations.csv`
 
 A file called `registrations.csv` will be created in your home directory.
-
-
