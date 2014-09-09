@@ -86,16 +86,13 @@ header {
     header .blurb .tagline {
       width: 100%;
       margin-bottom: 10px; }
-    header .blurb .taglinel.mobile {
+    header .blurb .tagline.mobile {
       display: none; }
     header .blurb p {
-      display: none;
       line-height: 1.6;
       text-align: justify;
       font-size: 10px;
       max-width: 540px; }
-    header .blurb p.show {
-      display: block; }
   header form {
     background-color: #8ec549;
     width: 200px;
@@ -229,13 +226,15 @@ footer .link {
       height: 420px;
       text-align: center; }
     header .blurb p {
+      display: none;
       font-size: 12px; }
     header .tagline.desktop {
       display: none;
       margin: 15px 0; }
-    header .tagline.mobile {
+    header .blurb .tagline.mobile {
       display: inline-block;
       width: 70%;
+      max-width: 200px;
       padding-top: 35px; }
     header .board-and-phone.mobile {
       display: inline-block;

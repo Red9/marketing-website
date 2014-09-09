@@ -89,18 +89,14 @@ header {
 			width: 100%;
 			margin-bottom: 10px;
 		}
-		.taglinel.mobile {
+		.tagline.mobile {
 			display: none;
 		}
 		p {
-			display: none;
 			line-height: 1.6;
 			text-align: justify;
 			font-size: 10px;
 			max-width: 540px;
-		}
-		p.show {
-			display: block;
 		}
 	}
 	form {

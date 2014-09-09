@@ -26,15 +26,17 @@
 			text-align: center;
 		}
 		.blurb p {
+			display: none;
 			font-size: 12px;
 		}
 		.tagline.desktop {
 			display: none;
 			margin: 15px 0;
 		}
-		.tagline.mobile {
+		.blurb .tagline.mobile {
 			display: inline-block;
 			width: 70%;
+			max-width: 200px;
 			padding-top: 35px;
 		}
 		.board-and-phone.mobile {
