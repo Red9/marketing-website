@@ -1,5 +1,5 @@
 #Setting up the marketing server 
-From a fresh Ubuntu install, run the provision.sh script in this respository.  This will
+From a fresh Ubuntu install, run the `provision.sh` script in this respository.  This will
 install and configure node and postgres.  When prompted, please enter a password for the
 postgres user.
 
