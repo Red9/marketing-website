@@ -26,3 +26,12 @@ post-start script
 end script
 
 
+#Export list of emails in CSV format 
+
+To do this, simply run this command:
+
+`echo "COPY (SELECT * FROM registrations) TO STDOUT With CSV HEADER;" | sudo -u postgres psql red9marketing | cat > ~/registrations.csv`
+
+A file called `registrations.csv` will be created in your home directory.
+
+
