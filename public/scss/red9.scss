@@ -10,7 +10,8 @@
 
 // Fonts
 $helvetica: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
- 
+$notoSans: "Noto Sans", sans-serif; 
+
 // Colors
 
 $baseColor: rgb(0,42,64);
@@ -33,7 +34,7 @@ $phoneWidth: 600px;
 body {
 	background-color: $baseColor;
 	color: white;
-	font-family: $helvetica;
+	font-family: $notoSans;
 	-webkit-font-smoothing: antialiased;
 
 	*,
@@ -68,7 +69,7 @@ header {
 		padding: 30px;
 		float: left;
 		width: calc(100% - 400px);
-		background: url(../img/board-and-phone.png) no-repeat;
+		background: url(../img/board-and-phone-dark.png) no-repeat;
 		background-position: 97% 10px;
 
 		@media screen and (max-width: 955px) {
@@ -81,39 +82,25 @@ header {
 			}
 		}
 		h1 {
-			color: $green;
-			font-size: 40px;
-			text-transform: uppercase;
-			margin-left: -4px;
+			text-indent: -9000px;
+			position: absolute;
+		}
+		.tagline {
+			width: 100%;
 			margin-bottom: 10px;
-
-			@media screen and (max-width: 1100px) {
-				font-size: 35px;
-			}
-			@media screen and (max-width: 1024px) {
-				font-size: 30px;
-			}
-			@media screen and (max-width: 955px) {
-				font-size: 40px;
-			}
-			@media screen and (max-width: 915px) {
-				font-size: 35px;
-			}
-			@media screen and (max-width: 855px) {
-				font-size: 30px;
-			}
-			@media screen and (max-width: 800px) {
-				font-size: 25px;
-			}
-			@media screen and (max-width: 755px) {
-				font-size: 20px;
-			}
+		}
+		.taglinel.mobile {
+			display: none;
 		}
 		p {
+			display: none;
 			line-height: 1.6;
 			text-align: justify;
 			font-size: 10px;
 			max-width: 540px;
+		}
+		p.show {
+			display: block;
 		}
 	}
 	form {
@@ -122,6 +109,7 @@ header {
 		height: $headerHeight;
 		padding: 20px;
 		float: right;
+		position: relative;
 
 		label {
 			color: $headerColor;
@@ -129,6 +117,7 @@ header {
 			width: 100%;
 			display: block;
 			margin: 10px 0;
+			white-space: nowrap;
 		}
 		input[type="text"],
 		input[type="email"] {
@@ -141,6 +130,12 @@ header {
 			padding-left: 10px;
 			border: 0;
 		}
+
+		input:focus {
+			background-color: white;
+			color: $headerColor;
+		}
+
 		button {
 			color: $headerColor;
 			background-color: transparent;
@@ -159,6 +154,14 @@ header {
 		}
 		:-ms-input-placeholder {  
 		   color: #f5f5f5;  
+		}
+
+
+		.logo {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
 		}
 	}
 }
@@ -225,7 +228,6 @@ footer .link {
 		font-weight: normal;
 		font-size: 14px;
 	}
-
 	a:hover {
 		text-decoration: underline;
 	}
@@ -235,4 +237,4 @@ footer .link {
 
 
 @import "mobile";
-
+@import "animations";

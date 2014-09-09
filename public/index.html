@@ -5,7 +5,9 @@
 
 	<meta charset="UTF-8">
 	<title>Red9</title>
+	<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/red9.css">
+
 </head>
 <body>
 	<div class="main-wrapper">
@@ -14,13 +16,15 @@
 			<div class="blurb">
 				<div class="blurb-wrapper">
 					<h1>Every move counts</h1>
+					<img src="img/EVERY-MOVE-COUNTS.png" class="tagline desktop"/>
 					<p>
 						Every pump, every turn, every air. Red9 Sensor reads and understands your surfing giving you an easy and simple breakdown of every wave ridden. Finally, a tool to analyze surfing in detail. Build your profile,  compare waves and share them with friends and experts. Get tips, tune your equipment and become the best surfer you can possibly be.
 					</p>
+					<img src="img/EVERY-MOVE-COUNTS-MOBILE.png" class="tagline mobile"/>
 				</div>
 			</div>
 			<form action="">
-				<label>Register and learn more:</label>
+				<label>Register and learn more</label>
 				<input type="text" name="fullName" placeholder="Full Name" required>
 				<input type="email" name="email" placeholder="Email" required>
 				<input type="text" name="postal" placeholder="Zip" required>
@@ -43,6 +47,7 @@
 			<li class="link"><a href="">Privacy</a></li>
 		</ul>
 	</footer>
+	<!--script src="//cdn.jsdelivr.net/velocity/1.0.0/velocity.min.js"></script-->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
 		$('form').on('submit', function () {
@@ -51,9 +56,13 @@
 				url: '/register', // TODO change this to domain name
 				data: $('form').serialize()
 			}).done(function() {
-				$('button').prop('disabled', true).text('Thank you!');
-			}).fail(function (data) {
+				$('button').prop('disabled', true).text('Thank you!').css('font-size', '1.4em');
+				$('label, input').slideUp();
+				setTimeout(function () {
+					$('button').fadeOut();
+				}, 1000);
 
+			}).fail(function (data) {
 				$('input').css('border', 'solid 1px tomato');
 				$('button').text('Try Again Please')
 				setTimeout(function () {
@@ -63,6 +72,12 @@
 
 			return false;
 		});
+
+		$('.tagline.mobile').on('touchend', function () {
+			$(this).hide();
+			$('.blurb p, .tagline.desktop').fadeIn();
+
+		})
 
 
 		$('input').on('change', function () {

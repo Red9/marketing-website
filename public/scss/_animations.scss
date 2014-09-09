@@ -1,0 +1,24 @@
+input.hide,
+label.hide {
+	-webkit-transition: all 300ms ease-in;
+	   -moz-transition: all 300ms ease-in;
+	    -ms-transition: all 300ms ease-in;
+	     -o-transition: all 300ms ease-in;
+	        transition: all 300ms ease-in;
+	    
+	    height: 0;
+	    opacity: 0;
+	    overflow: hidden;
+	    
+	& + button {
+		font-size: 1.4em;
+		margin-top: -5px;
+		opacity: 0;
+		-webkit-transition: opacity 1s linear;
+		   -moz-transition: opacity 1s linear;
+		    -ms-transition: opacity 1s linear;
+		     -o-transition: opacity 1s linear;
+		        transition: opacity 1s linear;
+	}
+}
+

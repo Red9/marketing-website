@@ -3,10 +3,14 @@
   "description": "Red9 Marketing Website",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
+  "scripts": {
+  	"start": "node server.js"
+  }
   "dependencies": {
     "express": "4.x",
     "pg": "3.4.2",
     "compression": "1.1.0",
-    "body-parser": "1.8.0"
+    "body-parser": "1.8.0",
   }
 }
