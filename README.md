@@ -5,12 +5,11 @@ postgres user.
 
 #Run the server as a service
 Use the following Upstart script if you want to run the server as a service (you do):
-description "node.js server - red9 marketing website"
-author "Merwan Rodriguez - merwan@gmail.com"
-
-
 ```
 #!bash
+
+description "node.js server - red9 marketing website"
+author "Merwan Rodriguez - merwan@gmail.com"
 
 start on started mountall
 stop on shutdown
