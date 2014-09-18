@@ -17,6 +17,7 @@ $notoSans: "Noto Sans", sans-serif;
 $baseColor: rgb(0,42,64);
 $green: rgb(142,197,73);
 $headerColor: rgb(0, 61, 84);
+$placeHolderColor: rgb(175,175,175);
 
 
 // Common Dimensions
@@ -25,7 +26,7 @@ $headerHeight: 200px;
 $maxWidth: 1200px;
 $tabletWidth: 1024px;
 $tabletPortrait: 768px;
-$phoneWidth: 600px;
+$phoneWidth: 690px;
 
 
 
@@ -69,11 +70,20 @@ header {
 		padding: 30px;
 		float: left;
 		width: calc(100% - 400px);
-		background: url(../img/board-and-phone-dark.png) no-repeat;
-		background-position: 97% 10px;
+		background: url(../img/board-and-phone-dark.jpg) no-repeat;
+		background-position: 94% 10px;
+		background-size: 183px auto;
+		position: relative;
+		
+		-webkit-transition: width 420ms ease-out;
+		   -moz-transition: width 420ms ease-out;
+		    -ms-transition: width 420ms ease-out;
+		     -o-transition: width 420ms ease-out;
+		        transition: width 420ms ease-out;
 
 		@media screen and (max-width: 955px) {
 			background-image: none;
+			padding: 15px;
 		}
 		.blurb-wrapper {
 			width: 70%;
@@ -88,6 +98,10 @@ header {
 		.tagline {
 			width: 100%;
 			margin-bottom: 10px;
+			
+			@media screen and (max-width: $tabletPortrait) {
+				margin-bottom: 0;
+			}
 		}
 		.tagline.mobile {
 			display: none;
@@ -140,16 +154,16 @@ header {
 			margin-top: 10px;
 		}
 		::-webkit-input-placeholder {
-		   color: #f5f5f5;
+		   color: $placeHolderColor;
 		}
 		:-moz-placeholder { /* Firefox 18- */
-		   color: #f5f5f5;  
+		   color: $placeHolderColor;  
 		}
 		::-moz-placeholder {  /* Firefox 19+ */
-		   color: #f5f5f5;  
+		   color: $placeHolderColor;  
 		}
 		:-ms-input-placeholder {  
-		   color: #f5f5f5;  
+		   color: $placeHolderColor;  
 		}
 
 
@@ -162,19 +176,62 @@ header {
 	}
 }
 
+// Social Icons
+.social-icons {
+	position: absolute;
+	overflow: hidden;
+	height: 40px;
+	right: -45px;
+	top: 10px;
+	width: 140px;
+	
+	@media screen and (max-width: 955px) {
+		top: auto;
+		bottom: 0;
+		right: -40px;
+	}
+	@media screen and (max-width: $phoneWidth + 1) {
+		top: 60%;
+		right: 0;
+	}
+
+}
+.social-icons .over {
+	position: absolute;
+	left: 13px;
+	pointer-events: none;
+	z-index: 0;
+	width: 60px;
+}
+.fb-like,
+.twitter-hashtag-button {
+	opacity: 0;
+	display: inline-block !important;
+	max-width: 50px;
+	top: 8px;
+	position: relative;
+	z-index: 1;
+	
+}
+
+
 
 // Wave styles
 
 .waves {
 	float: left;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 .wave {
 	width: 33.333%;
 	float: left;
 	margin-top: -1px;
+	
+	@media screen and (min-width: $maxWidth) {
+		width: 33.334%;
+	}
 
-	@media screen and (max-width: $tabletPortrait) {
+	@media screen and (max-width: $tabletPortrait + 1) {
 		width: 50%;
 		margin-top: 0;
 	}
@@ -192,11 +249,20 @@ footer {
 	margin-top: 50px;
 	width: 100%;
 	border-bottom: solid 1px #f5f5f5;
+	-webkit-transition: margin-top 250ms ease-in;
+	   -moz-transition: margin-top 250ms ease-in;
+	    -ms-transition: margin-top 250ms ease-in;
+	     -o-transition: margin-top 250ms ease-in;
+	        transition: margin-top 250ms ease-in;
 
-	@media screen and (max-width: $tabletWidth) {
+
+	@media screen and (max-width: $tabletWidth + 1) {
 		margin-top: 30px;
-
 	}
+}
+
+footer .social-icons {
+	display: none;
 }
 
 footer .links {
@@ -210,9 +276,11 @@ footer .links {
 footer .link {
 	margin: 0 40px 20px 0;
 	display: inline-block;
-
-	@media screen and (max-width: $tabletWidth) {
-		padding-bottom: 10px;
+	position: relative;
+	font-size: 14px;
+	
+	@media screen and (max-width: $tabletWidth + 1) {
+		padding-bottom: 0;
 	}
 
 	a,
@@ -222,13 +290,72 @@ footer .link {
 		text-decoration: none;
 		color: #f5f5f5;
 		font-weight: normal;
-		font-size: 14px;
 	}
 	a:hover {
 		text-decoration: underline;
 	}
 }
 
+// Pagelets
+
+.pagelet {
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+	width: 100%;
+	padding-top: 20px;
+	font-size: .8em;
+	background-color: #003d54;
+	
+	h2 {
+		font-size: 2em;
+		margin: 10px 0;
+		color: #8ec549;
+	}
+
+	p {
+		margin: 10px 0;
+		text-align: justify;
+		-webkit-font-smoothing: antialiased;
+		font-size: 1em;
+		line-height: 1.3;
+	}
+}
+
+.pagelet--wrapper {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+	
+	@media screen and (max-width: $maxWidth + 1) {
+		padding: 0 10px;
+	}
+	
+}
+
+// privacy policy
+#ppBody
+{
+    font-size:.9em;
+    text-align:justify;
+}
+
+#ppHeader
+{
+    font-size:1.2em;
+    color: rgb(142,197,73);
+}
+
+strong {
+    color: rgb(142,197,73);   
+    font-weight: normal;
+    font-size: 1.2em;
+}
+
+.ppConsistencies
+{
+    display:none;
+}
 
 
 

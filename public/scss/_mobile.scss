@@ -1,5 +1,5 @@
 
-@media screen and (max-width: 690px) { // because I said so.
+@media screen and (max-width: $phoneWidth + 1) { // because I said so.
 	header {
 		@include flexbox; 
 		@include flex-flow(row wrap);
@@ -19,11 +19,14 @@
   			width: 100%;
   			padding: 20px 20px 0;
   			padding-top: 10px;
-			background-image: url(../img/board-and-phone-dark.png);
+			background-image: url(../img/board-and-phone-dark.jpg);
 			background-position: center bottom;
 			background-repeat: no-repeat;
-			height: 420px;
+			height: 450px;
 			text-align: center;
+		}
+		.blurb .social-icons {
+			display: none;
 		}
 		.blurb p {
 			display: none;
@@ -52,7 +55,7 @@
 			height: auto;
 
 			@media screen and (max-width: 480px) {
-				padding: 10px;
+				padding: 5px 10px;
 
 				input[type="text"][name],
 				input[type="email"][name] { 
@@ -61,12 +64,13 @@
 				}
 
 				button[type] {
-					margin-top: 5px;
-					margin-bottom: 0;
+					margin: 0;
 				}
 
 				label {
-					display: none;
+					font-size: 12px;
+					margin: 0 0 5px 0;
+					white-space: nowrap;
 				}
 			}
 
@@ -79,6 +83,11 @@
 			}
 		}
 	}
+
+	// Small screen waves
+	.waves {
+		margin-bottom: 0;
+	}
 	.wave {
 		width: 100%;
 	}
@@ -86,15 +95,26 @@
 	// Small Screen Footer
 
 	footer {
+		margin-top: 0;
+		padding-top: 75px;
 		border-bottom: 0;
+		position: relative;
+	}
+	footer ul {
+		@include flexbox;
+		@include justify-content(space-around);
 
-		ul {
-			@include flexbox;
-			@include justify-content(space-around);
-
-			.link {
-				margin-right: 0;
-			}
+		.link {
+			margin-right: 0;
 		}
+	}
+	footer .social-icons {
+		display: block;
+		top: 20px;
+		right: calc(50% - 91px);
+	}
+
+	footer .social-icons .over {
+		width: 75px;
 	}
 }

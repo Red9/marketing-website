@@ -70,11 +70,19 @@ header {
     padding: 30px;
     float: left;
     width: calc(100% - 400px);
-    background: url(../img/board-and-phone-dark.png) no-repeat;
-    background-position: 97% 10px; }
+    background: url(../img/board-and-phone-dark.jpg) no-repeat;
+    background-position: 94% 10px;
+    background-size: 183px auto;
+    position: relative;
+    -webkit-transition: width 420ms ease-out;
+    -moz-transition: width 420ms ease-out;
+    -ms-transition: width 420ms ease-out;
+    -o-transition: width 420ms ease-out;
+    transition: width 420ms ease-out; }
     @media screen and (max-width: 955px) {
       header .blurb {
-        background-image: none; } }
+        background-image: none;
+        padding: 15px; } }
     header .blurb .blurb-wrapper {
       width: 70%; }
       @media screen and (max-width: 955px) {
@@ -86,6 +94,9 @@ header {
     header .blurb .tagline {
       width: 100%;
       margin-bottom: 10px; }
+      @media screen and (max-width: 768px) {
+        header .blurb .tagline {
+          margin-bottom: 0; } }
     header .blurb .tagline.mobile {
       display: none; }
     header .blurb p {
@@ -127,30 +138,66 @@ header {
       width: 100%;
       margin-top: 10px; }
     header form ::-webkit-input-placeholder {
-      color: #f5f5f5; }
+      color: #afafaf; }
     header form :-moz-placeholder {
       /* Firefox 18- */
-      color: #f5f5f5; }
+      color: #afafaf; }
     header form ::-moz-placeholder {
       /* Firefox 19+ */
-      color: #f5f5f5; }
+      color: #afafaf; }
     header form :-ms-input-placeholder {
-      color: #f5f5f5; }
+      color: #afafaf; }
     header form .logo {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%; }
 
+.social-icons {
+  position: absolute;
+  overflow: hidden;
+  height: 40px;
+  right: -45px;
+  top: 10px;
+  width: 140px; }
+  @media screen and (max-width: 955px) {
+    .social-icons {
+      top: auto;
+      bottom: 0;
+      right: -40px; } }
+  @media screen and (max-width: 691px) {
+    .social-icons {
+      top: 60%;
+      right: 0; } }
+
+.social-icons .over {
+  position: absolute;
+  left: 13px;
+  pointer-events: none;
+  z-index: 0;
+  width: 60px; }
+
+.fb-like,
+.twitter-hashtag-button {
+  opacity: 0;
+  display: inline-block !important;
+  max-width: 50px;
+  top: 8px;
+  position: relative;
+  z-index: 1; }
+
 .waves {
   float: left;
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
 
 .wave {
   width: 33.333%;
   float: left;
   margin-top: -1px; }
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 1200px) {
+    .wave {
+      width: 33.334%; } }
+  @media screen and (max-width: 769px) {
     .wave {
       width: 50%;
       margin-top: 0; } }
@@ -161,10 +208,18 @@ header {
 footer {
   margin-top: 50px;
   width: 100%;
-  border-bottom: solid 1px #f5f5f5; }
-  @media screen and (max-width: 1024px) {
+  border-bottom: solid 1px #f5f5f5;
+  -webkit-transition: margin-top 250ms ease-in;
+  -moz-transition: margin-top 250ms ease-in;
+  -ms-transition: margin-top 250ms ease-in;
+  -o-transition: margin-top 250ms ease-in;
+  transition: margin-top 250ms ease-in; }
+  @media screen and (max-width: 1025px) {
     footer {
       margin-top: 30px; } }
+
+footer .social-icons {
+  display: none; }
 
 footer .links {
   max-width: 1200px;
@@ -175,22 +230,66 @@ footer .links {
 
 footer .link {
   margin: 0 40px 20px 0;
-  display: inline-block; }
-  @media screen and (max-width: 1024px) {
+  display: inline-block;
+  position: relative;
+  font-size: 14px; }
+  @media screen and (max-width: 1025px) {
     footer .link {
-      padding-bottom: 10px; } }
+      padding-bottom: 0; } }
   footer .link a,
   footer .link a:visited,
   footer .link a:active,
   footer .link a:hover {
     text-decoration: none;
     color: #f5f5f5;
-    font-weight: normal;
-    font-size: 14px; }
+    font-weight: normal; }
   footer .link a:hover {
     text-decoration: underline; }
 
-@media screen and (max-width: 690px) {
+.pagelet {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 20px;
+  font-size: .8em;
+  background-color: #003d54; }
+  .pagelet h2 {
+    font-size: 2em;
+    margin: 10px 0;
+    color: #8ec549; }
+  .pagelet p {
+    margin: 10px 0;
+    text-align: justify;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1em;
+    line-height: 1.3; }
+
+.pagelet--wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto; }
+  @media screen and (max-width: 1201px) {
+    .pagelet--wrapper {
+      padding: 0 10px; } }
+
+#ppBody {
+  font-size: .9em;
+  text-align: justify; }
+
+#ppHeader {
+  font-size: 1.2em;
+  color: #8ec549; }
+
+strong {
+  color: #8ec549;
+  font-weight: normal;
+  font-size: 1.2em; }
+
+.ppConsistencies {
+  display: none; }
+
+@media screen and (max-width: 691px) {
   header {
     display: -webkit-box;
     display: -webkit-flex;
@@ -220,11 +319,13 @@ footer .link {
       width: 100%;
       padding: 20px 20px 0;
       padding-top: 10px;
-      background-image: url(../img/board-and-phone-dark.png);
+      background-image: url(../img/board-and-phone-dark.jpg);
       background-position: center bottom;
       background-repeat: no-repeat;
-      height: 420px;
+      height: 450px;
       text-align: center; }
+    header .blurb .social-icons {
+      display: none; }
     header .blurb p {
       display: none;
       font-size: 12px; }
@@ -256,19 +357,20 @@ footer .link {
       flex-flow: column nowrap;
       width: 50%;
       height: auto; } }
-    @media screen and (max-width: 690px) and (max-width: 480px) {
+    @media screen and (max-width: 691px) and (max-width: 480px) {
       header form {
-        padding: 10px; }
+        padding: 5px 10px; }
         header form input[type="text"][name],
         header form input[type="email"][name] {
           margin-bottom: 5px;
           margin-top: 0; }
         header form button[type] {
-          margin-top: 5px;
-          margin-bottom: 0; }
+          margin: 0; }
         header form label {
-          display: none; } }
-@media screen and (max-width: 690px) {
+          font-size: 12px;
+          margin: 0 0 5px 0;
+          white-space: nowrap; } }
+@media screen and (max-width: 691px) {
       header form input[type="text"],
       header form input[type="email"],
       header form button {
@@ -279,23 +381,38 @@ footer .link {
         flex-grow: 1;
         margin-bottom: 10px; }
 
+  .waves {
+    margin-bottom: 0; }
+
   .wave {
     width: 100%; }
 
   footer {
-    border-bottom: 0; }
-    footer ul {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-pack: distribute;
-      -webkit-justify-content: space-around;
-      -moz-justify-content: space-around;
-      justify-content: space-around; }
-      footer ul .link {
-        margin-right: 0; } }
+    margin-top: 0;
+    padding-top: 75px;
+    border-bottom: 0;
+    position: relative; }
+
+  footer ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
+    justify-content: space-around; }
+    footer ul .link {
+      margin-right: 0; }
+
+  footer .social-icons {
+    display: block;
+    top: 20px;
+    right: calc(50% - 91px); }
+
+  footer .social-icons .over {
+    width: 75px; } }
 input.hide,
 label.hide {
   -webkit-transition: all 300ms ease-in;
@@ -316,5 +433,17 @@ label.hide {
     -ms-transition: opacity 1s linear;
     -o-transition: opacity 1s linear;
     transition: opacity 1s linear; }
+
+.showing-menu-item.about .pagelet.about, .showing-menu-item.privacypolicy .pagelet.privacypolicy {
+  height: auto;
+  padding-bottom: 20px;
+  opacity: 1;
+  -webkit-transition: all 500ms 200ms linear;
+  -moz-transition: all 500ms 200ms linear;
+  -ms-transition: all 500ms 200ms linear;
+  -o-transition: all 500ms 200ms linear;
+  transition: all 500ms 200ms linear; }
+.showing-menu-item.about .about a, .showing-menu-item.privacypolicy .privacypolicy a {
+  text-decoration: underline; }
 
 /*# sourceMappingURL=red9.css.map */

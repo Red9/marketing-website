@@ -22,3 +22,33 @@ label.hide {
 	}
 }
 
+.showing-menu-item {
+	// .wave {
+	// 	width: 16.667%;
+
+	// 	-webkit-transition: all 250ms linear;
+	// 	   -moz-transition: all 250ms linear;
+	// 	    -ms-transition: all 250ms linear;
+	// 	     -o-transition: all 250ms linear;
+	// 	        transition: all 250ms linear;
+	// }
+	&.about .pagelet.about,
+	&.privacypolicy .pagelet.privacypolicy {
+		height: auto;
+		padding-bottom: 20px;
+		opacity: 1;
+		
+		-webkit-transition: all 500ms 200ms linear;
+		   -moz-transition: all 500ms 200ms linear;
+		    -ms-transition: all 500ms 200ms linear;
+		     -o-transition: all 500ms 200ms linear;
+		        transition: all 500ms 200ms linear;
+	}
+
+	&.about .about a,
+	&.privacypolicy .privacypolicy a {
+		text-decoration: underline;
+	}
+
+
+}
