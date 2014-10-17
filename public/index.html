@@ -31,13 +31,18 @@
 					<h1>Every move counts</h1>
 					<img src="img/EVERY-MOVE-COUNTS.png" class="tagline desktop"/>
 					<p>
-						Every wave, every pump, every turn, every air. Red9 Sensor measures, records and understands your surfing giving you a simple breakdown of every wave you ride. Build your profile, compare your waves, analyze your performance and share them with friends and experts. Get tips, tune your equipment and become the best surfer you can possibly be. Our mission is to give surfers the tools that measure and quantify every movement, because Every Move Counts.
+						Every wave, every pump, every turn, every air. Red9 Sensor measures, records, and understands your surfing and gives you a simple performance analysis of every wave. Build your profile, compare your waves, analyze your performance, and share them with friends and experts. Get feedback, tune your equipment, compete with friends, and become the best surfer you can be. Red9 gives surfers the tools to measure and quantify every movement, because <strong>Every Move Counts.</strong>
 					</p>
 					<div class="social-icons">
-						<img class="over" src="img/social-top.png">
-						<div class="fb-like" data-href="http://www.redninesensor.com" data-width="50px" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
-						<a href="https://twitter.com/intent/tweet?button_hashtag=red9&text=Every%20move%20Counts.%20Finally%20a%20device%20than%20can%20read%20and%20understand%20my%20surfing%20and%20helps%20me%20get%20better" class="twitter-hashtag-button" data-related="red9sensor" data-url="http://www.redninesensor.com" data-dnt="true">Tweet #red9</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<a href="https://www.facebook.com/red9sensor" target="_new">
+							<img class="over facebook" src="img/fb_icon.png" />
+						</a>
+						<a href="http://www.twitter.com/red9sensor" target="_new">
+							<img class="over twitter" src="img/twitter-icon.png" />
+						<a href="https://www.instagram.com/red9surf" target="_new">
+							<img class="over instagram" src="img/instagram_icon_64x64.png" />
+						</a>
+
 					</div>
 					<img src="img/EVERY-MOVE-COUNTS-MOBILE.png" class="tagline mobile"/>
 				</div>
@@ -61,11 +66,16 @@
 	</div>
 	<footer>
 		<div class="social-icons">
-			<img class="over" src="img/social-bottom.png">
-			<div class="fb-like" data-href="http://www.redninesensor.com" data-width="50px" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
-			<a href="https://twitter.com/intent/tweet?button_hashtag=red9&text=Every%20move%20Counts.%20Finally%20a%20device%20than%20can%20read%20and%20understand%20my%20surfing%20and%20helps%20me%20get%20better" class="twitter-hashtag-button" data-related="red9sensor" data-url="http://www.redninesensor.com" data-dnt="true">Tweet #red9</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			<a href="https://www.facebook.com/red9sensor" target="_new">
+				<img class="over facebook" src="img/fb_icon.png" />
+			</a>
+			<a href="http://www.twitter.com/red9sensor" target="_new">
+				<img class="over twitter" src="img/twitter-icon.png" />
+			<a href="https://www.instagram.com/red9surf" target="_new">
+				<img class="over instagram" src="img/instagram_icon_64x64.png" />
+			</a>
 		</div>
+
 		<ul class="links">
 			<li class="link"><a href="mailto:hello@redninesensor.com">Contact</a></li>
 			<li class="link about">
@@ -98,6 +108,13 @@
 				});
 
 				$('form').on('submit', Red9.sendData);
+
+				$(document).on('click', '.sign-up-link', function () {
+					$('body,html').animate({scrollTop: 0}, 420).promise().done(function () {
+						$('header :input:first').focus();	
+					})
+					
+				})
 			}
 
 		   ,showMenuItem: function () { // TODO use React for this...
@@ -107,13 +124,16 @@
 		   		}).done(function (data) {
 		   			var $content = $('.' + linkName + '.pagelet');
 		   			$content.html(data);
+		   			setTimeout(function () {
+		   				$('html, body').animate({scrollTop: $('footer').offset().top - 10}, 300);	
+
+		   			}, 500);
+		   			$('body').removeClass('about privacypolicy showing-menu-item').addClass('showing-menu-item ' + linkName);
 		   		});
 
-				$('body').removeClass('about privacypolicy showing-menu-item').addClass('showing-menu-item ' + linkName);
+				
 
-				setTimeout(function () {
-					$('html, body').animate({scrollTop: $('footer').offset().top - 50}, 300);	
-				}, 500);
+
 
 				return false;
 			}

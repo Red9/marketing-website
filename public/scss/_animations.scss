@@ -35,14 +35,8 @@ label.hide {
 	&.about .pagelet.about,
 	&.privacypolicy .pagelet.privacypolicy {
 		height: auto;
-		padding-bottom: 20px;
+		padding: 20px 0;
 		opacity: 1;
-		
-		-webkit-transition: all 500ms 200ms linear;
-		   -moz-transition: all 500ms 200ms linear;
-		    -ms-transition: all 500ms 200ms linear;
-		     -o-transition: all 500ms 200ms linear;
-		        transition: all 500ms 200ms linear;
 	}
 
 	&.about .about a,

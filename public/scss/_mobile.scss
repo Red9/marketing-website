@@ -96,7 +96,7 @@
 
 	footer {
 		margin-top: 0;
-		padding-top: 75px;
+		padding-top: 50px;
 		border-bottom: 0;
 		position: relative;
 	}
@@ -108,13 +108,17 @@
 			margin-right: 0;
 		}
 	}
+
 	footer .social-icons {
 		display: block;
-		top: 20px;
-		right: calc(50% - 91px);
-	}
+		margin-bottom: 25px;
+		
+		a {
+			margin-right: 5px;
+		}
 
-	footer .social-icons .over {
-		width: 75px;
+		img {
+			width: 35px;
+		}
 	}
 }
