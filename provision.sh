@@ -15,3 +15,6 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE red9marketing TO red9
 sudo -u postgres psql -d red9marketing -c "CREATE TABLE registrationsq ( id SERIAL primary key, email TEXT UNIQUE, fullname TEXT, postalcode TEXT, time_registered TIMESTAMP NOT NULL DEFAULT now());"
 sudo -u postgres psql -d red9marketing -c "GRANT ALL ON registrations TO red9;"
 sudo -u postgres psql -d red9marketing -c "GRANT ALL ON registrations_id_seq TO red9;"
+
+# Setup upstart script
+sudo apt-get -y install upstart
