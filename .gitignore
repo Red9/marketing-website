@@ -1,2 +1,7 @@
 psd/
 .sass-cache/
+dist/
+node_modules/
+*.css.map
+.idea/
+private/

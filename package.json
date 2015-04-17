@@ -1,18 +1,30 @@
 {
-  "name": "red9-marketing",
-  "description": "Red9 Marketing Website",
-  "version": "0.1.0",
-  "private": true,
-  "main": "server.js",
+  "name": "marketing-website",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-  	"start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:rednine/marketing-website.git"
+  },
+  "author": "srlm <srlm@srlm.io>",
+  "license": "none",
   "dependencies": {
-    "express": "4.x",
-    "pg": "3.4.2",
-    "compression": "1.1.0",
-    "body-parser": "1.8.0",
-    "express-redirect": "1.1.0",
-    "serve-favicon": "2.1.6"
+    "grunt": "0.4.x",
+    "grunt-aws-s3": "0.12.x",
+    "grunt-contrib-clean": "0.6.x",
+    "grunt-contrib-compress": "0.13.x",
+    "grunt-contrib-connect": "0.10.x",
+    "grunt-contrib-copy": "0.8.x",
+    "grunt-contrib-cssmin": "0.12.x",
+    "grunt-contrib-htmlmin": "0.4.x",
+    "grunt-contrib-sass": "0.9.x",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-dom-munger": "3.4.x",
+    "grunt-invalidate-cloudfront": "^0.1.6",
+    "load-grunt-tasks": "3.1.x"
   }
 }
