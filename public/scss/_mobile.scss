@@ -5,12 +5,16 @@
 		@include flex-flow(row wrap);
 
 		height: auto;
+		margin-top: 0;
 	
 		.logo {
 			@include order(1);
 
 			width: 50%;
 			height: 50%;
+		}
+		.blurb-wrapper {
+			margin-bottom: 20px;
 		}
 		.blurb {
 			@include order(3);
@@ -19,10 +23,8 @@
   			width: 100%;
   			padding: 20px 20px 0;
   			padding-top: 10px;
-			background-image: url(../img/board-and-phone-dark.jpg);
-			background-position: center bottom;
-			background-repeat: no-repeat;
-			height: 450px;
+			background-image: none;
+			height: auto;
 			text-align: center;
 		}
 		.blurb .social-icons {
@@ -31,6 +33,7 @@
 		.blurb p {
 			display: none;
 			font-size: 12px;
+			max-width: 100%;
 		}
 		.tagline.desktop {
 			display: none;
@@ -42,9 +45,12 @@
 			max-width: 200px;
 			padding-top: 35px;
 		}
-		.board-and-phone.mobile {
-			display: inline-block;
-			margin-bottom: -2px;
+		.blurb .board-and-phone.mobile {
+			display: block;
+			margin: 45px auto -2px;
+			position: relative;
+			bottom: 0;
+			width: 40%;
 		}
 		form {
 			@include flexbox;
@@ -95,7 +101,7 @@
 	// Small Screen Footer
 
 	footer {
-		margin-top: 0;
+		margin-top: 0px;
 		padding-top: 50px;
 		border-bottom: 0;
 		position: relative;

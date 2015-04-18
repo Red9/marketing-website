@@ -48,16 +48,13 @@ module.exports = function (grunt) {
             }
         },
         clean: {
-
             before: {
-                src: 'dist'
+                src: ['dist/', '.tmp/']
             },
             nonCompressed: {
                 options: {
-                //    'no-write': true
+                    //    'no-write': true
                 },
-                //src: ['dist/**/*.*', '!dist/**/*.gz']
-                //src: '<%= compress.main.dest %>'
                 src: ['dist/**/*.*', '!dist/**/*.gz', '!dist/img/**/*']
             }
         },
@@ -68,6 +65,7 @@ module.exports = function (grunt) {
                 src: [
                     '**/*.html',
                     '**/*.css',
+                    '**/*.js',
                     'img/**/*',
                     'fonts/**/*'
                 ],
@@ -85,8 +83,8 @@ module.exports = function (grunt) {
         useminPrepare: {
             html: 'dist/index.html',
             options: {
-                dest: 'dist',
-                root: './'
+                dest: 'dist/',
+                root: 'public/'
             }
         },
         usemin: {
@@ -107,9 +105,9 @@ module.exports = function (grunt) {
                 }
             }
         },
-        htmlmin: {                                     // Task
+        htmlmin: {
             target: {
-                options: {                                 // Target options
+                options: {
                     removeComments: true,
                     collapseWhitespace: true,
                     conservativeCollapse: true
@@ -120,14 +118,6 @@ module.exports = function (grunt) {
                 dest: 'dist/'
             }
         },
-        //cssmin: {
-        //    target: {
-        //        expand: true,
-        //        cwd: 'dist/',
-        //        src: '**/*.css',
-        //        dest: 'dist/'
-        //    }
-        //},
         compress: {
             main: {
                 options: {
@@ -145,7 +135,7 @@ module.exports = function (grunt) {
         aws: grunt.file.readJSON('private/preview.json'), // Read the file
         aws_s3: {
             options: {
-                debug: false,
+                debug: true,
                 accessKeyId: '<%= aws.AWSAccessKeyId %>', // Use the variables
                 secretAccessKey: '<%= aws.AWSSecretKey %>', // You can also use env variables
                 region: 'us-west-1',
@@ -154,25 +144,44 @@ module.exports = function (grunt) {
                 differential: true, // Only uploads the files that have changed
                 gzipRename: 'ext' // when uploading a gz file, keep the original extension
             },
-            preview: {
+
+            previewDelete: {
+                options: {
+                    bucket: 'preview.redninesensor.com'
+                },
+                files: [{
+                    action: 'delete',
+                    differential: true,
+                    dest: '/',
+                    cwd: 'dist/'
+                }]
+            },
+            previewUpload: {
                 options: {
                     bucket: 'preview.redninesensor.com',
                 },
-                files: [
-                    {
-                        action: 'upload',
-                        expand: true,
-                        cwd: 'dist/',
-                        src: '**/*',
-                        dest: ''
-                    },
-                    {
-                        action: 'delete',
-                        differential: true,
-                        dest: '/',
-                        cwd: 'dist/'
-                    }
-                ]
+                files: [{
+                    action: 'upload',
+                    expand: true,
+                    cwd: 'dist/',
+                    src: '**/*',
+                    dest: ''
+                }]
+            }
+        },
+        invalidate_cloudfront: {
+            options: {
+                key: '<%= aws.AWSAccessKeyId %>', // Use the variables
+                secret: '<%= aws.AWSSecretKey %>', // You can also use env variables
+                distribution: 'abc'
+            },
+            preview: {
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: 'index.html', //'<%= test.upload.dirty %>',
+                    dest: ''
+                }]
             }
         }
 
@@ -186,19 +195,27 @@ module.exports = function (grunt) {
         'copy',
         'dom_munger:update',
         'useminPrepare',
-        //'concat:generated',
+        'concat:generated',
         'cssmin:generated',
         'uglify:generated',
         'usemin',
-        'htmlmin',
-        'compress'
-        //'clean:nonCompressed'
+        'htmlmin'
     ]);
 
     grunt.registerTask('deploy-preview', [
         'build',
-        'aws_s3:preview'
+        'compress',
+        'aws_s3:previewDelete',
+        'clean:nonCompressed',
+        'aws_s3:previewUpload',
+        'printParameter',
+        'invalidate_cloudfront:preview'
     ]);
+
+    grunt.registerTask('printParameter', 'test', function () {
+        console.log('print parameter:');
+        console.log(grunt.config.get('test.upload.dirty'));
+    });
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156

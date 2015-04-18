@@ -1,0 +1,48 @@
+// Social Icons
+.social-icons {
+	position: absolute;
+	height: 40px;
+	top: 10px;
+	width: 94.5%;
+	text-align: right;
+	
+	@media screen and (max-width: 955px) {
+		position: relative;
+		width: 100%;
+		top: auto;
+		bottom: 0;
+	}
+	@media screen and (max-width: $phoneWidth + 1) {
+		text-align: center;
+	}
+
+	.facebook {
+		width: 24px;
+	}
+
+	.twitter {
+		width: 24px;
+	}
+
+	.instagram {
+		width: 27px;
+		position: relative;
+		top: 1px;
+	}
+
+}
+.social-icons a {
+	display: inline-block;
+	margin-right: 3px;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); // from material design 
+	
+	&:last-child {
+		margin-left: 2px;
+	}
+
+	img {
+		width: 25px;
+	}
+
+
+}

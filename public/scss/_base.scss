@@ -1,0 +1,19 @@
+// Base styles
+
+body {
+	background-color: $baseColor;
+	color: white;
+	font-family: $notoSans;
+	-webkit-font-smoothing: antialiased;
+
+	*,
+	*:after,
+	*:before {
+		box-sizing: border-box;
+	}
+}
+.main-wrapper {
+	max-width: $maxWidth;
+	margin: 0 auto;
+	overflow: hidden;
+}

@@ -1,0 +1,121 @@
+// Header styles
+
+header {
+	width: 100%;
+	height: $headerHeight;
+	background-color: $headerColor;
+	overflow: hidden;
+	margin-top: 20px;
+
+	.logo {
+		width: 200px;
+		height: $headerHeight;
+		float: left;
+	}
+	.blurb {
+		height: 100%;
+		padding: 30px;
+		float: left;
+		width: calc(100% - 400px);
+		background: url(../img/board-and-phone-dark.jpg) no-repeat;
+		background-position: 94% 10px;
+		background-size: 183px auto;
+		position: relative;
+		
+		-webkit-transition: width 420ms ease-out;
+		   -moz-transition: width 420ms ease-out;
+		    -ms-transition: width 420ms ease-out;
+		     -o-transition: width 420ms ease-out;
+		        transition: width 420ms ease-out;
+
+		@media screen and (max-width: 955px) {
+			background-image: none;
+			padding: 15px;
+		}
+		.blurb-wrapper {
+			width: 70%;
+			@media screen and (max-width: 955px) {
+				width: 100%;
+			}
+		}
+		h1 {
+			text-indent: -9000px;
+			position: absolute;
+		}
+		.tagline {
+			width: 100%;
+			margin-bottom: 10px;
+			
+			@media screen and (max-width: $tabletPortrait) {
+				margin-bottom: 0;
+			}
+		}
+		.tagline.mobile,
+		.board-and-phone.mobile {
+			display: none;
+		}
+		p {
+			line-height: 1.6;
+			text-align: justify;
+			font-size: 10px;
+			max-width: 540px;
+		}
+	}
+	form {
+		background-color: $green;
+		width: 200px;
+		height: $headerHeight;
+		padding: 20px;
+		float: right;
+		position: relative;
+
+		label {
+			color: $headerColor;
+			font-size: 14px;
+			width: 100%;
+			display: block;
+			margin: 10px 0;
+			white-space: nowrap;
+		}
+		input[type="text"],
+		input[type="email"] {
+			font-family: $helvetica;
+			background-color: $headerColor;
+			height: 30px;
+			color: white;
+			width: 100%;
+			margin-bottom: 5px;
+			padding-left: 10px;
+			border: 0;
+		}
+		input:focus {
+			background-color: white;
+			color: $headerColor;
+		}
+		button {
+			color: $headerColor;
+			background-color: transparent;
+			border: 0;
+			width: 100%;
+			margin-top: 10px;
+		}
+		::-webkit-input-placeholder {
+		   color: $placeHolderColor;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+		   color: $placeHolderColor;  
+		}
+		::-moz-placeholder {  /* Firefox 19+ */
+		   color: $placeHolderColor;  
+		}
+		:-ms-input-placeholder {  
+		   color: $placeHolderColor;  
+		}
+		.logo {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+	}
+}
