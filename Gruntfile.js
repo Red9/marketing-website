@@ -48,8 +48,17 @@ module.exports = function (grunt) {
             }
         },
         clean: {
+
             before: {
                 src: 'dist'
+            },
+            nonCompressed: {
+                options: {
+                //    'no-write': true
+                },
+                //src: ['dist/**/*.*', '!dist/**/*.gz']
+                //src: '<%= compress.main.dest %>'
+                src: ['dist/**/*.*', '!dist/**/*.gz', '!dist/img/**/*']
             }
         },
         copy: {
@@ -73,6 +82,31 @@ module.exports = function (grunt) {
                 src: 'dist/**/*.html'
             }
         },
+        useminPrepare: {
+            html: 'dist/index.html',
+            options: {
+                dest: 'dist',
+                root: './'
+            }
+        },
+        usemin: {
+            html: 'dist/index.html'
+        },
+        uglify: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+                compress: {
+                    sequences: true,
+                    dead_code: true,
+                    conditionals: true,
+                    booleans: true,
+                    unused: true,
+                    if_return: true,
+                    join_vars: true,
+                    drop_console: true
+                }
+            }
+        },
         htmlmin: {                                     // Task
             target: {
                 options: {                                 // Target options
@@ -86,14 +120,14 @@ module.exports = function (grunt) {
                 dest: 'dist/'
             }
         },
-        cssmin: {
-            target: {
-                expand: true,
-                cwd: 'dist/',
-                src: '**/*.css',
-                dest: 'dist/'
-            }
-        },
+        //cssmin: {
+        //    target: {
+        //        expand: true,
+        //        cwd: 'dist/',
+        //        src: '**/*.css',
+        //        dest: 'dist/'
+        //    }
+        //},
         compress: {
             main: {
                 options: {
@@ -101,7 +135,7 @@ module.exports = function (grunt) {
                 },
                 expand: true,
                 cwd: 'dist/',
-                src: '**/*',
+                src: ['**/*', '!img/**/*'],
                 dest: 'dist/',
                 ext: function (ext) {
                     return ext + '.gz';
@@ -116,13 +150,13 @@ module.exports = function (grunt) {
                 secretAccessKey: '<%= aws.AWSSecretKey %>', // You can also use env variables
                 region: 'us-west-1',
                 uploadConcurrency: 10, // 10 simultaneous uploads
-                downloadConcurrency: 10 // 10 simultaneous downloads
+                downloadConcurrency: 10, // 10 simultaneous downloads
+                differential: true, // Only uploads the files that have changed
+                gzipRename: 'ext' // when uploading a gz file, keep the original extension
             },
             preview: {
                 options: {
                     bucket: 'preview.redninesensor.com',
-                    differential: true, // Only uploads the files that have changed
-                    gzipRename: 'ext' // when uploading a gz file, keep the original extension
                 },
                 files: [
                     {
@@ -151,14 +185,19 @@ module.exports = function (grunt) {
         'clean:before',
         'copy',
         'dom_munger:update',
-        'cssmin',
+        'useminPrepare',
+        //'concat:generated',
+        'cssmin:generated',
+        'uglify:generated',
+        'usemin',
         'htmlmin',
         'compress'
+        //'clean:nonCompressed'
     ]);
 
     grunt.registerTask('deploy-preview', [
         'build',
-        'aws_s3'
+        'aws_s3:preview'
     ]);
 
     grunt.event.on('watch', function (action, filepath) {
