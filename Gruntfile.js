@@ -132,13 +132,22 @@ module.exports = function (grunt) {
                 }
             }
         },
+        filerev: {
+          options: {
+              algorithm: 'md5',
+              length: 8
+          },
+            assets: {
+                src: ['dist/**/*.*', '!dist/index.html']
+            }
+        },
         aws: grunt.file.readJSON('private/preview.json'), // Read the file
         aws_s3: {
             options: {
                 debug: true,
                 accessKeyId: '<%= aws.AWSAccessKeyId %>', // Use the variables
                 secretAccessKey: '<%= aws.AWSSecretKey %>', // You can also use env variables
-                region: 'us-west-1',
+                region: '<%= aws.region %>',
                 uploadConcurrency: 10, // 10 simultaneous uploads
                 downloadConcurrency: 10, // 10 simultaneous downloads
                 differential: true, // Only uploads the files that have changed
@@ -173,21 +182,21 @@ module.exports = function (grunt) {
             options: {
                 key: '<%= aws.AWSAccessKeyId %>', // Use the variables
                 secret: '<%= aws.AWSSecretKey %>', // You can also use env variables
-                distribution: 'abc'
+                //distribution: '<%= aws.cloudfrontDistribution %>'
+                distribution: 'TESTING'
             },
             preview: {
-                files: [{
-                    expand: true,
-                    cwd: 'dist/',
-                    src: 'index.html', //'<%= test.upload.dirty %>',
-                    dest: ''
-                }]
+                expand: true,
+                cwd: 'dist/',
+                src: '<%= aws_s3.previewUpload.dirtyupload %>',
+                dest: '',
+                filter: 'isFile'
             }
         }
 
     });
 
-    grunt.registerTask('serve', ['connect:development', 'watch']);
+    grunt.registerTask('serve', ['sass', 'connect:development', 'watch']);
     grunt.registerTask('serve-dist', ['build', 'connect:dist', 'watch']);
     grunt.registerTask('build', [
         'sass',
@@ -208,13 +217,19 @@ module.exports = function (grunt) {
         'aws_s3:previewDelete',
         'clean:nonCompressed',
         'aws_s3:previewUpload',
+        'build', // Rebuild, so that the distribution can create the files list correctly...
         'printParameter',
         'invalidate_cloudfront:preview'
     ]);
 
     grunt.registerTask('printParameter', 'test', function () {
         console.log('print parameter:');
-        console.log(grunt.config.get('test.upload.dirty'));
+        console.log(grunt.config.get('aws_s3.previewUpload.uploaddirty'));
+        console.log(grunt.config.get('aws_s3.previewUpload.upload.dirty'));
+        console.log(grunt.config.get('aws_s3.previewUpload.dirtyupload'));
+
+        //console.log(grunt.config.get('aws_s3.previewUpload'));
+
     });
 
     grunt.event.on('watch', function (action, filepath) {

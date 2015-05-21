@@ -3,18 +3,15 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:rednine/marketing-website.git"
   },
   "author": "srlm <srlm@srlm.io>",
-  "license": "none",
+  "license": "private",
   "dependencies": {
     "grunt": "0.4.x",
-    "grunt-aws-s3": "0.12.x",
+    "grunt-aws-s3": "0.13.x",
     "grunt-contrib-clean": "0.6.x",
     "grunt-contrib-compress": "0.13.x",
     "grunt-contrib-concat": "^0.5.1",
@@ -26,6 +23,7 @@
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "0.6.x",
     "grunt-dom-munger": "3.4.x",
+    "grunt-filerev": "2.3.x",
     "grunt-invalidate-cloudfront": "^0.1.6",
     "grunt-usemin": "^3.0.0",
     "load-grunt-tasks": "3.1.x"

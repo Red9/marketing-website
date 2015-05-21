@@ -1,13 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="UTF-8">
-    <title>Red9</title>
+    <title>Red9 Sensor</title>
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet'
+          type='text/css'>
+
+
+    <!-- Mailchimp Styles -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        #mc_embed_signup {
+            background: none;
+            clear: left;
+            font: 14px Helvetica, Arial, sans-serif;
+            color: black;
+        }
+
+        /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
 
 
     <base href="/">
@@ -20,10 +36,11 @@
 <body class="showing-menu-item about">
 <!-- Social stuff -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -31,28 +48,36 @@
 <script src="//f.vimeocdn.com/js/froogaloop2.min.js"></script>
 <div class='embed-container not-mobile'>
     <!-- //player.vimeo.com/video/117357439 | 110050360 -->
-    <iframe src='http://player.vimeo.com/video/117357439?api=1' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen class="vimeo-player"></iframe>
+    <iframe src='http://player.vimeo.com/video/117357439?api=1' frameborder='0' webkitAllowFullScreen mozallowfullscreen
+            allowFullScreen class="vimeo-player"></iframe>
     <div class="scroll-indicator"><i class="fa fa-angle-down"></i></div>
 </div>
 <div class="main-wrapper">
     <header>
         <img src="img/red9-logo.png" alt="" class="logo">
+
         <div class="blurb">
             <div class="blurb-wrapper">
 
                 <h1>Every move counts</h1>
                 <img src="img/EVERY-MOVE-COUNTS.png" class="tagline desktop"/>
+
                 <p>
-                    Every wave, every pump, every turn, every air. Red9 Sensor measures, records, and understands your surfing and gives you a simple performance analysis of every wave. Build your profile, compare your waves, analyze your performance, and share them with friends and experts. Get feedback, tune your equipment, compete with friends, and become the best surfer you can be. Red9 gives surfers the tools to measure and quantify every movement, because <strong>Every Move Counts.</strong>
+                    Every wave, every pump, every turn, every air. Red9 Sensor measures, records, and understands your
+                    surfing and gives you a simple performance analysis of every wave. Build your profile, compare your
+                    waves, analyze your performance, and share them with friends and experts. Get feedback, tune your
+                    equipment, compete with friends, and become the best surfer you can be. Red9 gives surfers the tools
+                    to measure and quantify every movement, because <strong>Every Move Counts.</strong>
                 </p>
+
                 <div class="social-icons">
                     <a href="https://www.facebook.com/red9surf" target="_new">
-                        <img class="over facebook" src="img/fb_icon.png" />
+                        <img class="over facebook" src="img/fb_icon.png"/>
                     </a>
                     <a href="http://www.twitter.com/red9surf" target="_new">
-                        <img class="over twitter" src="img/twitter-icon.png" />
+                        <img class="over twitter" src="img/twitter-icon.png"/>
                         <a href="https://www.instagram.com/red9surf" target="_new">
-                            <img class="over instagram" src="img/instagram_icon_64x64.png" />
+                            <img class="over instagram" src="img/instagram_icon_64x64.png"/>
                         </a>
 
                 </div>
@@ -64,13 +89,14 @@
             </div>
             <img src="img/board-and-phone-dark.jpg" class="board-and-phone mobile"/>
         </div>
-        <form action="">
-            <label>Register and learn more</label>
-            <input type="text" name="fullName" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="text" name="postal" placeholder="Zip" required>
-            <button type="submit">Send!</button>
-        </form>
+        <!--<form action="">-->
+        <!--<label>Register and learn more</label>-->
+        <!--<input type="text" name="fullName" placeholder="Full Name" required>-->
+        <!--<input type="email" name="email" placeholder="Email" required>-->
+        <!--<input type="text" name="postal" placeholder="Zip" required>-->
+        <!--<button type="submit">Send!</button>-->
+        <!--</form>-->
+
     </header>
     <ul class="waves">
         <li class="wave"><img src="img/wave1-up.jpg" alt="Wave Quality"></li>
@@ -80,16 +106,53 @@
         <li class="wave"><img src="img/wave5-up.jpg" alt="Rotation"></li>
         <li class="wave"><img src="img/wave6-up.jpg" alt="Power"></li>
     </ul>
+
+    <!-- Begin MailChimp Signup Form -->
+    <div id="mc_embed_signup">
+        <form action="//redninesensor.us10.list-manage.com/subscribe/post?u=8361dd61c85a958aac662c65e&amp;id=f9407d3fd9"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+              target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+
+                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                <div class="mc-field-group">
+                    <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
+                    </label>
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                </div>
+                <div class="mc-field-group">
+                    <label for="mce-FNAME">First Name </label>
+                    <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                </div>
+                <div class="mc-field-group">
+                    <label for="mce-LNAME">Last Name </label>
+                    <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                </div>
+                <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;"><input type="text"
+                                                                       name="b_8361dd61c85a958aac662c65e_f9407d3fd9"
+                                                                       tabindex="-1" value=""></div>
+                <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
+                                          id="mc-embedded-subscribe" class="button"></div>
+            </div>
+        </form>
+    </div>
+    <!--End mc_embed_signup-->
+
 </div>
 <footer>
     <div class="social-icons">
         <a href="https://www.facebook.com/red9surf" target="_new">
-            <img class="over facebook" src="img/fb_icon.png" />
+            <img class="over facebook" src="img/fb_icon.png"/>
         </a>
         <a href="http://www.twitter.com/red9surf" target="_new">
-            <img class="over twitter" src="img/twitter-icon.png" />
+            <img class="over twitter" src="img/twitter-icon.png"/>
             <a href="https://www.instagram.com/red9surf" target="_new">
-                <img class="over instagram" src="img/instagram_icon_64x64.png" />
+                <img class="over instagram" src="img/instagram_icon_64x64.png"/>
             </a>
     </div>
 
@@ -117,10 +180,17 @@
 
 <!-- analytics -->
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-54754673-1', 'auto');
     ga('send', 'pageview');
