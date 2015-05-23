@@ -1,0 +1,129 @@
+@import "social";
+
+body {
+  // From Google Fonts, Lato is an Avenir alternative
+  font-family: 'Lato', sans-serif;
+}
+
+
+img.backstretch-placeholder {
+  display: none;
+}
+
+.section {
+
+  //.row {
+  //  //min-height: 100px;
+  //  min-height: 100vh;
+  //}
+
+  &.intro .row {
+    min-height: 50vh;
+  }
+
+  &.signup .row {
+    min-height: 100vh;
+  }
+
+  &.device .row {
+    min-height: 400px;
+    min-height: 80vh;
+  }
+
+  &.conclusion .row {
+    min-height: 400px;
+    min-height: 70vh;
+  }
+
+  //&.video {
+  //  background-color: black;
+  //
+  //}
+
+  &.stats {
+    //margin-top: 5em;
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .row-sm-whitespace {
+    margin-top: 10em !important;
+  }
+}
+
+// flex-center taken from
+// http://stackoverflow.com/a/27771750/2557842
+.row-xs-flex-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.row-xs-flex-top {
+  display: flex;
+  align-items: flex-start;
+}
+
+.row-xs-flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .row-sm-flex-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+  .row-sm-flex-center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .row-sm-flex-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+  .row-md-flex-center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .row-sm-flex-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+  .row-lg-flex-center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.overlay {
+
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1.5em;
+  border-radius: 1em;
+  margin-top: 2em;
+
+  h1, h2, h3,
+  h4, h5, h6, p, label {
+    color: white;
+  }
+}
+
+.row.spaced {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+// For the mailchimp signup, so that the text is visible.
+//input {
+//  color: black;
+//}

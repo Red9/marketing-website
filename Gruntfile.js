@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                     livereloadOnError: false,
                     spawn: false // Faster, but more prone to watch failure
                 },
-                files: ['public/**/*.html', 'public/**/*.scss'],
+                files: ['public/**/*.html', 'public/**/*.scss', 'public/**/*.js'],
                 tasks: [] //all the tasks are run dynamically during the watch event handler
             }
         },
@@ -36,13 +36,31 @@ module.exports = function (grunt) {
                 }
             }
         },
+        wiredep: {
+            task: {
+                src: [
+                    'public/**/*.html'
+                ]
+            }
+        },
+        assemble: {
+            options: {
+                layout: 'src/layouts/default.hbs',
+                flatten: true
+            },
+            pages: {
+                files: {
+                    'web/': ['src/pages/*.hbs']
+                }
+            }
+        },
         sass: {
             basic: {
                 files: [{
                     expand: true,
-                    cwd: 'public/scss/',
+                    cwd: 'public/',
                     src: ['**/*.scss'],
-                    dest: 'public/css/',
+                    dest: 'public/',
                     ext: '.css'
                 }]
             }
@@ -55,7 +73,7 @@ module.exports = function (grunt) {
                 options: {
                     //    'no-write': true
                 },
-                src: ['dist/**/*.*', '!dist/**/*.gz', '!dist/img/**/*']
+                src: ['dist/**/*.*', '!dist/**/*.gz', '!dist/images/**/*']
             }
         },
         copy: {
@@ -64,10 +82,8 @@ module.exports = function (grunt) {
                 cwd: 'public/',
                 src: [
                     '**/*.html',
-                    '**/*.css',
-                    '**/*.js',
-                    'img/**/*',
-                    'fonts/**/*'
+                    'images/**/*',
+                    '!bower_components/**/*.*'
                 ],
                 dest: 'dist/'
             }
@@ -125,7 +141,7 @@ module.exports = function (grunt) {
                 },
                 expand: true,
                 cwd: 'dist/',
-                src: ['**/*', '!img/**/*'],
+                src: ['**/*', '!images/**/*'],
                 dest: 'dist/',
                 ext: function (ext) {
                     return ext + '.gz';
@@ -133,10 +149,10 @@ module.exports = function (grunt) {
             }
         },
         filerev: {
-          options: {
-              algorithm: 'md5',
-              length: 8
-          },
+            options: {
+                algorithm: 'md5',
+                length: 8
+            },
             assets: {
                 src: ['dist/**/*.*', '!dist/index.html']
             }
@@ -144,7 +160,7 @@ module.exports = function (grunt) {
         aws: grunt.file.readJSON('private/preview.json'), // Read the file
         aws_s3: {
             options: {
-                debug: true,
+                //debug: true,
                 accessKeyId: '<%= aws.AWSAccessKeyId %>', // Use the variables
                 secretAccessKey: '<%= aws.AWSSecretKey %>', // You can also use env variables
                 region: '<%= aws.region %>',
@@ -154,17 +170,17 @@ module.exports = function (grunt) {
                 gzipRename: 'ext' // when uploading a gz file, keep the original extension
             },
 
-            previewDelete: {
-                options: {
-                    bucket: 'preview.redninesensor.com'
-                },
-                files: [{
-                    action: 'delete',
-                    differential: true,
-                    dest: '/',
-                    cwd: 'dist/'
-                }]
-            },
+            //previewDelete: {
+            //    options: {
+            //        bucket: 'preview.redninesensor.com'
+            //    },
+            //    files: [{
+            //        action: 'delete',
+            //        differential: true,
+            //        dest: '/',
+            //        cwd: 'dist/'
+            //    }]
+            //},
             previewUpload: {
                 options: {
                     bucket: 'preview.redninesensor.com',
@@ -182,13 +198,13 @@ module.exports = function (grunt) {
             options: {
                 key: '<%= aws.AWSAccessKeyId %>', // Use the variables
                 secret: '<%= aws.AWSSecretKey %>', // You can also use env variables
-                //distribution: '<%= aws.cloudfrontDistribution %>'
-                distribution: 'TESTING'
+                distribution: '<%= aws.cloudfrontDistribution %>'
+                //distribution: 'TESTING'
             },
             preview: {
                 expand: true,
                 cwd: 'dist/',
-                src: '<%= aws_s3.previewUpload.dirtyupload %>',
+                src: '**/*.html.gz',
                 dest: '',
                 filter: 'isFile'
             }
@@ -206,7 +222,9 @@ module.exports = function (grunt) {
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
+        //'filerev',
         'uglify:generated',
+        'filerev',
         'usemin',
         'htmlmin'
     ]);
@@ -214,11 +232,11 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy-preview', [
         'build',
         'compress',
-        'aws_s3:previewDelete',
+        //'aws_s3:previewDelete',
         'clean:nonCompressed',
         'aws_s3:previewUpload',
-        'build', // Rebuild, so that the distribution can create the files list correctly...
-        'printParameter',
+        //'build', // Rebuild, so that the distribution can create the files list correctly...
+        //'printParameter',
         'invalidate_cloudfront:preview'
     ]);
 

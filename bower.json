@@ -1,0 +1,22 @@
+{
+  "name": "marketing-website",
+  "version": "0.0.1",
+  "authors": [
+    "srlm <srlm@srlm.io>"
+  ],
+  "license": "private",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.x",
+    "jquery": "2.1.x",
+    "jquery-backstretch": "~2.0.4"
+  },
+  "resolutions": {
+    "jquery": "2.1.x"
+  }
+}
