@@ -1,21 +1,66 @@
 @import "social";
 
+$logored: #ed145b;
+$logolightred: #ed6896;
+$logoblack: #322f31;
+$logowhite: #ffffff;
+$schemeselect: #8dc63e;
+$schemeforeground: #002a41;
+$schemebackground: #003c55;
+
+.ks-logo-inline {
+  height: 30px;
+  transform: translateY(-4px);
+}
+
+.col-padding {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 body {
   // From Google Fonts, Lato is an Avenir alternative
   font-family: 'Lato', sans-serif;
 }
 
+.btn-rednine {
+  background: $logoblack;
+  color: $logowhite;
+}
+
+.btn-rednine:hover, .btn-rednine:focus, .btn-rednine:active, .btn-rednine.active, .open > .dropdown-toggle.btn-rednine {
+  background: $logored;
+  color: $logowhite;
+}
+
+.btn-rednine:active, .btn-rednine.active {
+  background: $logolightred;
+  color: $logowhite;
+  box-shadow: none;
+}
 
 img.backstretch-placeholder {
   display: none;
 }
 
-.section {
+.overlay {
+  background-color: rgba($schemeforeground, 0.6);
+  padding: 1.5em;
+  border-radius: 1em;
+  margin-top: 2em;
 
-  //.row {
-  //  //min-height: 100px;
-  //  min-height: 100vh;
-  //}
+  h1, h2, h3,
+  h4, h5, h6, p, label {
+    color: $logowhite;
+  }
+}
+
+.row.spaced {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+.section {
 
   &.intro .row {
     min-height: 50vh;
@@ -33,15 +78,6 @@ img.backstretch-placeholder {
   &.conclusion .row {
     min-height: 400px;
     min-height: 70vh;
-  }
-
-  //&.video {
-  //  background-color: black;
-  //
-  //}
-
-  &.stats {
-    //margin-top: 5em;
   }
 }
 
@@ -105,25 +141,96 @@ img.backstretch-placeholder {
   }
 }
 
-.overlay {
 
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1.5em;
-  border-radius: 1em;
-  margin-top: 2em;
+$bgDefault: $logoblack;
+$bgHighlight: #474446;
+$colDefault: #ffffff;
+$colHighlight: $logoblack;
 
-  h1, h2, h3,
-  h4, h5, h6, p, label {
-    color: white;
+$dropDown: false;
+.navbar-branded {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight;
+    }
+  }
+  .navbar-text {
+    color: $colDefault;
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover, &:focus {
+          color: $colHighlight;
+        }
+      }
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          > li > a {
+            color: $colDefault;
+            &:hover, &:focus {
+              color: $colHighlight;
+              background-color: $bgHighlight;
+            }
+          }
+          .divider {
+            background-color: $bgHighlight;
+          }
+        }
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight;
+    }
+    .icon-bar {
+      background-color: $colDefault;
+    }
+  }
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault;
+  }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight;
+    }
   }
 }
 
-.row.spaced {
-  margin-top: 5em;
-  margin-bottom: 5em;
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight;
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
 }
-
-// For the mailchimp signup, so that the text is visible.
-//input {
-//  color: black;
-//}

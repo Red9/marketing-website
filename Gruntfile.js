@@ -40,7 +40,14 @@ module.exports = function (grunt) {
             task: {
                 src: [
                     'public/**/*.html'
-                ]
+                ],
+                options: {
+                    overrides: {
+                        bootstrap: { // We don't want the bootstrap JS, so we set main to just CSS
+                            main: 'dist/css/bootstrap.css'
+                        }
+                    }
+                }
             }
         },
         assemble: {
@@ -68,12 +75,6 @@ module.exports = function (grunt) {
         clean: {
             before: {
                 src: ['dist/', '.tmp/']
-            },
-            nonCompressed: {
-                options: {
-                    //    'no-write': true
-                },
-                src: ['dist/**/*.*', '!dist/**/*.gz', '!dist/images/**/*']
             }
         },
         copy: {
@@ -169,27 +170,33 @@ module.exports = function (grunt) {
                 differential: true, // Only uploads the files that have changed
                 gzipRename: 'ext' // when uploading a gz file, keep the original extension
             },
-
-            //previewDelete: {
-            //    options: {
-            //        bucket: 'preview.redninesensor.com'
-            //    },
-            //    files: [{
-            //        action: 'delete',
-            //        differential: true,
-            //        dest: '/',
-            //        cwd: 'dist/'
-            //    }]
-            //},
-            previewUpload: {
+            previewUploadStatic: {
                 options: {
                     bucket: 'preview.redninesensor.com',
+                    params: {
+                        CacheControl: 'no-transform, public, max-age=86400, s-maxage=86400'
+                    }
                 },
                 files: [{
                     action: 'upload',
                     expand: true,
                     cwd: 'dist/',
-                    src: '**/*',
+                    src: ['**/*.gz', 'images/**/*', '!**/*.html.gz'],
+                    dest: ''
+                }]
+            },
+            previewUploadPages: {
+                options: {
+                    bucket: 'preview.redninesensor.com',
+                    params: {
+                        CacheControl: 'public, max-age=300, s-maxage=900'
+                    }
+                },
+                files: [{
+                    action: 'upload',
+                    expand: true,
+                    cwd: 'dist/',
+                    src: '**/*.html.gz',
                     dest: ''
                 }]
             }
@@ -204,7 +211,7 @@ module.exports = function (grunt) {
             preview: {
                 expand: true,
                 cwd: 'dist/',
-                src: '**/*.html.gz',
+                src: '**/*.html',
                 dest: '',
                 filter: 'isFile'
             }
@@ -222,7 +229,6 @@ module.exports = function (grunt) {
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
-        //'filerev',
         'uglify:generated',
         'filerev',
         'usemin',
@@ -232,11 +238,8 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy-preview', [
         'build',
         'compress',
-        //'aws_s3:previewDelete',
-        'clean:nonCompressed',
-        'aws_s3:previewUpload',
-        //'build', // Rebuild, so that the distribution can create the files list correctly...
-        //'printParameter',
+        'aws_s3:previewUploadStatic',
+        'aws_s3:previewUploadPages',
         'invalidate_cloudfront:preview'
     ]);
 
