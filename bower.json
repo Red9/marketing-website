@@ -14,9 +14,9 @@
   "dependencies": {
     "bootstrap": "3.3.x",
     "jquery": "2.1.x",
-    "jquery-backstretch": "~2.0.4",
-    "animate.css": "~3.3.0",
-    "wow.js": "~1.1.2"
+    "jquery-backstretch": "2.0.x",
+    "animate.css": "3.3.x",
+    "wow.js": "1.1.x"
   },
   "resolutions": {
     "jquery": "2.1.x"

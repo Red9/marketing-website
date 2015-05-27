@@ -3,7 +3,8 @@ psd/
 dist/
 node_modules/
 *.css.map
+*.css
 .idea/
 private/
 .tmp/
-bower_components/
+*/bower_components/

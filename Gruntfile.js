@@ -7,6 +7,7 @@ module.exports = function (grunt) {
 
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
+    grunt.loadNpmTasks('assemble');
 
     // Project configuration.
     grunt.initConfig({
@@ -155,7 +156,7 @@ module.exports = function (grunt) {
                 length: 8
             },
             assets: {
-                src: ['dist/**/*.*', '!dist/index.html']
+                src: ['dist/**/*.*', '!dist/index.html', '!dist/**/favicons/**/*']
             }
         },
         aws: grunt.file.readJSON('private/preview.json'), // Read the file
