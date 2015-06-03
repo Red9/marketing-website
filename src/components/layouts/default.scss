@@ -1,0 +1,91 @@
+@import "../scss/social";
+@import "../scss/variables";
+
+
+.col-padding {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+body {
+  // From Google Fonts, Lato is an Avenir alternative
+  font-family: 'Lato', sans-serif;
+}
+
+.btn-rednine {
+  background: $logoblack;
+  color: $logowhite;
+}
+
+.btn-rednine:hover, .btn-rednine:focus, .btn-rednine:active, .btn-rednine.active, .open > .dropdown-toggle.btn-rednine {
+  background: $logored;
+  color: $logowhite;
+}
+
+.btn-rednine:active, .btn-rednine.active {
+  background: $logolightred;
+  color: $logowhite;
+  box-shadow: none;
+}
+
+.row.spaced {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+@media (min-width: 768px) {
+  .row-sm-whitespace {
+    margin-top: 10em !important;
+  }
+}
+
+// flex-center taken from
+// http://stackoverflow.com/a/27771750/2557842
+.row-xs-flex-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.row-xs-flex-top {
+  display: flex;
+  align-items: flex-start;
+}
+
+.row-xs-flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .row-sm-flex-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+  .row-sm-flex-center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .row-sm-flex-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+  .row-md-flex-center {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .row-sm-flex-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+  .row-lg-flex-center {
+    display: flex;
+    align-items: center;
+  }
+}
+

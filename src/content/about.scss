@@ -1,0 +1,30 @@
+@import "../components/scss/social";
+@import "../components/scss/variables";
+@import "../components/scss/mixins";
+
+.section {
+  &.about-red9 {
+
+    @include responsive-background-image('mike_olson_on_wave', 'jpg');
+
+    .container {
+      min-height: 100vh;
+    }
+  }
+
+  &.team-executives {
+    @include responsive-background-image('flowers_and_waves', 'jpg');
+
+    .container {
+      min-height: 100vh;
+    }
+  }
+
+  &.team-staff {
+    @include responsive-background-image('device_sand', 'jpg');
+
+    .container {
+      min-height: 100vh;
+    }
+  }
+}

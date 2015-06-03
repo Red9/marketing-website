@@ -1,0 +1,45 @@
+@import "../components/scss/social";
+@import "../components/scss/variables";
+@import "../components/scss/mixins";
+
+.ks-logo-inline {
+  height: 30px;
+  transform: translateY(-4px);
+}
+
+.section {
+
+  &.intro .row {
+    min-height: 50vh;
+  }
+
+  &.signup {
+
+    @include responsive-background-image('indo_teloislands_ledge', 'jpg');
+
+    .row {
+      min-height: 100vh;
+    }
+  }
+
+  &.device {
+
+    @include responsive-background-image('device_front_light_on', 'jpg');
+
+    .row {
+      min-height: 400px;
+      min-height: 80vh;
+
+    }
+  }
+
+  &.conclusion {
+
+    @include responsive-background-image('sunset_surf', 'jpg');
+
+    .row {
+      min-height: 400px;
+      min-height: 70vh;
+    }
+  }
+}

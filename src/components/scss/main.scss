@@ -1,0 +1,28 @@
+@import "social.scss";
+@import "variables.scss";
+
+.overlay {
+  background-color: rgba($schemeforeground, 0.6);
+  padding: 1.5em;
+  border-radius: 1em;
+  margin-top: 2em;
+
+  h1, h2, h3,
+  h4, h5, h6, p, label {
+    color: $logowhite;
+
+    small {
+      color: $logowhite;
+    }
+
+  }
+}
+
+//.card {
+//  background-color: $schemeforeground;
+//  border: 2px solid $schemeselect;
+//  border-radius: 1em;
+//  padding: 1em;
+//}
+
+

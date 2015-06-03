@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="{{page.description}}">
+    <title>{{page.title}}</title>
+
+    {{> favicons}}
+
+    <!-- build:css css/site.css -->
+    <!-- bower:css -->
+    <!-- Bower files are dynamically added during build -->
+    <!-- endbower -->
+    <link rel="stylesheet" href="components/partials/navbar.css"/>
+    <link rel="stylesheet" href="components/layouts/default.css"/>
+    <link rel="stylesheet" href="components/scss/main.css"/>
+    <!-- endbuild -->
+
+    {{#if page.css}}
+        <!-- build:css css/page.{{page.css}} -->
+        <link rel="stylesheet" href="{{page.css}}"/>
+        <!-- endbuild -->
+    {{/if}}
+
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'
+          type='text/css'>
+
+
+</head>
+
+<body>
+
+{{> navbar}}
+
+{{> body}}
+
+<!-- build:js js/site.js -->
+<!-- bower:js -->
+<!-- Bower files are dynamically added during build -->
+<!-- endbower -->
+<!-- endbuild -->
+
+{{#if page.js}}
+    <!-- build:js js/page.{{page.js}} -->
+    <script src="{{page.js}}"></script>
+    <!-- endbuild -->
+{{/if}}
+
+</body>
+</html>

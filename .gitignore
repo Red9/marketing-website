@@ -1,10 +1,10 @@
 psd/
 .sass-cache/
 dist/
+build/
 node_modules/
 *.css.map
 *.css
 .idea/
 private/
 .tmp/
-*/bower_components/
