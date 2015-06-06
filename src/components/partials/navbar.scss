@@ -9,10 +9,40 @@ $colHighlight: $logoblack;
   margin-bottom: 0;
 }
 
+.navbar-header a {
+
+  // Hack to get the pull-right stuff to align correctly.
+  line-height: 50px;
+
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+
+  text-decoration: none;
+
+  color: $logowhite;
+}
+
 $dropDown: false;
 .navbar-branded {
   background-color: $bgDefault;
   border-color: $bgHighlight;
+
+  .btn-navbar {
+    background: $logoblack;
+    color: $logowhite;
+
+    &:hover, &:focus, &:active, &.active, .open > &.dropdown-toggle {
+      background: $logored;
+      color: $logowhite;
+    }
+
+    &:active, &.active {
+      background: $logolightred;
+      color: $logowhite;
+      box-shadow: none;
+    }
+  }
+
   .navbar-brand {
     color: $colDefault;
     &:hover, &:focus {

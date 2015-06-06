@@ -1,7 +1,6 @@
 @import "../scss/social";
 @import "../scss/variables";
 
-
 .col-padding {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -15,17 +14,34 @@ body {
 .btn-rednine {
   background: $logoblack;
   color: $logowhite;
+
+  &:hover, &:focus, &:active, &.active, .open > &.dropdown-toggle {
+    background: $logored;
+    color: $logowhite;
+
+    border-radius: 0;
+  }
+
+  &:active, &.active {
+    background: $logolightred;
+    color: $logowhite;
+    box-shadow: none;
+  }
 }
 
-.btn-rednine:hover, .btn-rednine:focus, .btn-rednine:active, .btn-rednine.active, .open > .dropdown-toggle.btn-rednine {
-  background: $logored;
-  color: $logowhite;
+.social-icon {
+  margin-left: 0.75em;
+  margin-right: 0.75em;
 }
 
-.btn-rednine:active, .btn-rednine.active {
-  background: $logolightred;
-  color: $logowhite;
-  box-shadow: none;
+a {
+  &:hover, &:focus, &:active, &.active {
+    color: $logored;
+  }
+
+  &:active, &.active {
+    color: $logowhite;
+  }
 }
 
 .row.spaced {
@@ -87,5 +103,11 @@ body {
     display: flex;
     align-items: center;
   }
+}
+
+footer hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.1));
 }
 

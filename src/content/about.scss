@@ -4,27 +4,15 @@
 
 .section {
   &.about-red9 {
-
     @include responsive-background-image('mike_olson_on_wave', 'jpg');
-
-    .container {
-      min-height: 100vh;
+    .row {
+      min-height: 70vh;
     }
   }
 
-  &.team-executives {
-    @include responsive-background-image('flowers_and_waves', 'jpg');
+  &.team-members {
+    background-color: $schemebackground;
 
-    .container {
-      min-height: 100vh;
-    }
-  }
-
-  &.team-staff {
-    @include responsive-background-image('device_sand', 'jpg');
-
-    .container {
-      min-height: 100vh;
-    }
+    color: white;
   }
 }

@@ -1,4 +1,3 @@
-// Taken from http://www.sitepoint.com/managing-responsive-breakpoints-sass/
 $breakpoints: (
         'xs' : (max-width: 767px),
         'sm' : (min-width: 768px),
@@ -7,6 +6,7 @@ $breakpoints: (
         'xl' : (min-width: 1700px)
 );
 
+// Taken from http://www.sitepoint.com/managing-responsive-breakpoints-sass/
 @mixin respond-to($name) {
   // If the key exists in the map
   @if map-has-key($breakpoints, $name) {
@@ -23,36 +23,47 @@ $breakpoints: (
   }
 }
 
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 // Based on:
 // http://joshbroton.com/multiple-background-images-using-sass-and-media-queries/
-
 // Use like:
-
 // @include responsive-background-image('mike_olson_on_wave', 'jpg');
-
-
 @mixin responsive-background-image($name, $extension) {
-//  background: url(/images/backgrounds/#{$name}-lg.#{$extension}) no-repeat center center;
-//  background-size: cover;
+  //  background: url(/images/backgrounds/#{$name}-lg.#{$extension}) no-repeat center center;
+  //  background-size: cover;
 
   @include respond-to('xs') {
     background: url(/images/backgrounds/#{$name}-xs.#{$extension}) no-repeat center center;
     background-size: cover;
+    animation: fadeInAnimation 2s;
   }
   @include respond-to('sm') {
     background: url(/images/backgrounds/#{$name}-sm.#{$extension}) no-repeat center center;
     background-size: cover;
+    animation: fadeInAnimation 2s;
   }
   @include respond-to('md') {
     background: url(/images/backgrounds/#{$name}-md.#{$extension}) no-repeat center center;
     background-size: cover;
+    animation: fadeInAnimation 2s;
   }
   @include respond-to('lg') {
     background: url(/images/backgrounds/#{$name}-lg.#{$extension}) no-repeat center center;
     background-size: cover;
+    animation: fadeInAnimation 2s;
   }
   @include respond-to('xl') {
     background: url(/images/backgrounds/#{$name}-xl.#{$extension}) no-repeat center center;
     background-size: cover;
+    animation: fadeInAnimation 2s;
   }
 }

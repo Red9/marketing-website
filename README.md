@@ -1,40 +1,28 @@
-#Setting up the marketing server 
-From a fresh Ubuntu install, run the `provision.sh` script in this respository.  This will
-install and configure node and postgres.  When prompted, please enter a password for the
-postgres user.
 
-#Run the server as a service
-Use the following Upstart script if you want to run the server as a service (you do):
-```
-#!bash
+# Setup Development System
 
-description "node.js server - red9 marketing website"
-author "Merwan Rodriguez - merwan@gmail.com"
 
-start on started mountall
-stop on shutdown
 
-# Respawn if necesary
-respawn
-respawn limit 99 5
 
-script
-        export HOME="/home/ubuntu"
 
-        exec sudo /usr/bin/node /home/ubuntu/red9marketing/server.js >> /var/log/node.log 2>&1
-end script
 
-post-start script
-        #Need a notifier script here
-end script
 
 ```
+# For imagemin-mozjpeg
+sudo apt-get install libtool automake autoconf nasm
+
+# For responsive-images resizing
+sudo apt-get install imagemagick
+
+npm install
+bower install
+```
+
+# Important Grunt Targets
+
+- `grunt serve`: Run the build process and open a server on [localhost:8000](). 
+- `grunt serve-dist`: Run the build and minification process, and open a server on [localhost:8000]().
+- `grunt deploy-preview`: Build, minify, and push files for deployment on [preview.redninesensor.com]().
 
 
-#Export list of emails in CSV format 
 
-To do this, simply run this command:
-
-`echo "COPY (SELECT * FROM registrations) TO STDOUT With CSV HEADER;" | sudo -u postgres psql red9marketing | cat > ~/registrations.csv`
-
-A file called `registrations.csv` will be created in your home directory.

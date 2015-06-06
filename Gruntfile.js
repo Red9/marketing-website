@@ -1,6 +1,10 @@
 /*jslint node: true */
 'use strict';
 
+var mozjpeg = require('imagemin-mozjpeg');
+var pngquant = require('imagemin-pngquant');
+var rewriteModule = require('http-rewrite-middleware');
+
 var pkg = require('./package.json');
 
 module.exports = function (grunt) {
@@ -8,8 +12,6 @@ module.exports = function (grunt) {
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
     grunt.loadNpmTasks('assemble');
-
-    var rewriteModule = require('http-rewrite-middleware');
 
     // Project configuration.
     grunt.initConfig({
@@ -25,12 +27,12 @@ module.exports = function (grunt) {
                     spawn: false // Faster, but more prone to watch failure
                 },
                 files: ['src/**/*.*'],
-                tasks: [] //all the tasks are run dynamically during the watch event handler
+                tasks: ['build']
             }
         },
         connect: {
             options: {
-                debug: true,
+                debug: false,
                 livereload: true,
                 // If it doesn't have a file extension then let's try serving
                 // a .html file. Allows for vanity URLs.
@@ -84,6 +86,9 @@ module.exports = function (grunt) {
                     //src: ['dist/', '.tmp/', 'build/**/*.*', '!build/bower_components/**/*']
                     src: ['dist/', '.tmp/']
                 }]
+            },
+            newer: {
+                src: 'node_modules/grunt-newer/.cache/'
             }
         },
         wiredep: {
@@ -137,9 +142,23 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        uncss: {
+        postcss: {
+            options: {
+                map: true, // Update the existing source map
+                diff: false,
+                processors: [
+                    require('autoprefixer-core')({
+                        browsers: 'last 3 versions, > 0.5%'
+                    })
+                ]
+            },
             build: {
-                files: {}
+                files: [{
+                    expand: true,
+                    cwd: 'build/',
+                    src: ['**/*.css', '!bower_components/**/*.css'],
+                    dest: 'build/'
+                }]
             }
         },
         copy: {
@@ -208,10 +227,23 @@ module.exports = function (grunt) {
         },
         imagemin: {
             build: {
+                options: {
+                    optimizationLevel: 4, // png trials
+                    use: [
+                        mozjpeg({
+                            quality: 80,
+                            progressive: true
+                        }),
+                        pngquant({
+                            quality: '75-80',
+                            speed: 1
+                        })
+                    ]
+                },
                 files: [{
                     expand: true,
                     cwd: 'build/images/',
-                    src: ['**/*.{png,jpg,gif}'],
+                    src: ['**/*.{png,jpg,gif}', '!favicons/**'],
                     dest: 'build/images/'
                 }]
             }
@@ -255,6 +287,37 @@ module.exports = function (grunt) {
                 }
             }
         },
+        uncss: {
+            prepare: {
+                options: {
+                    csspath: '../',
+                    stylesheets: ['.tmp/concat/css/site.css'],
+                    // ignore list taken from: ???
+                    ignore: [
+                        /(#|\.)fancybox(\-[a-zA-Z]+)?/,
+                        // Bootstrap selectors added via JS
+                        /\w\.in/,
+                        ".fade",
+                        ".collapse",
+                        ".collapsing",
+                        /(#|\.)navbar(\-[a-zA-Z]+)?/,
+                        /(#|\.)dropdown(\-[a-zA-Z]+)?/,
+                        /(#|\.)(open)/,
+                        // currently only in a IE conditional, so uncss doesn't see it
+                        ".close",
+                        ".alert-dismissible",
+                        ".animated"
+                    ]
+                },
+                files: {
+                    // Yes, this is a special case. Remove CSS rules from the
+                    // sitewide css file if that rule is not used in any HTML
+                    // file.
+                    '.tmp/concat/css/site.css': 'dist/**/*.html'
+
+                }
+            }
+        },
         htmlmin: {
             target: {
                 options: {
@@ -281,17 +344,19 @@ module.exports = function (grunt) {
         // Deploy
         // ---------------------------------------------------------------------
         compress: {
-            main: {
+            deploy: {
                 options: {
                     mode: 'gzip'
                 },
-                expand: true,
-                cwd: 'dist/',
-                src: ['**/*', '!images/**/*'],
-                dest: 'dist/',
-                ext: function (ext) {
-                    return ext + '.gz';
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: ['**/*', '!images/**/*'],
+                    dest: 'dist/',
+                    ext: function (ext) {
+                        return ext + '.gz';
+                    }
+                }]
             }
         },
         aws: grunt.file.readJSON('private/preview.json'), // Read the file
@@ -304,6 +369,7 @@ module.exports = function (grunt) {
                 uploadConcurrency: 10, // 10 simultaneous uploads
                 downloadConcurrency: 10, // 10 simultaneous downloads
                 differential: true, // Only uploads the files that have changed
+                displayChangesOnly: true,
                 gzipRename: 'ext' // when uploading a gz file, keep the original extension
             },
             previewUploadStatic: {
@@ -359,7 +425,6 @@ module.exports = function (grunt) {
                 }
             }
         }
-
     });
 
     grunt.registerTask('serve', ['build', 'connect:development', 'watch']);
@@ -367,6 +432,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'sass',
+        'postcss:build',
         'copy:build',
         'assemble',
         'wiredep:build',
@@ -380,6 +446,7 @@ module.exports = function (grunt) {
         'copy:prepare',
         'useminPrepare',
         'concat:generated',
+        'uncss:prepare',
         'cssmin:generated',
         'uglify:generated',
         'filerev',
@@ -388,32 +455,11 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('deploy-preview', [
+        'clean:newer',
         'prepare',
-        'compress',
+        'compress:deploy',
         'aws_s3:previewUploadStatic',
         'aws_s3:previewUploadPages',
         'invalidate_cloudfront:preview'
     ]);
-
-    grunt.registerTask('printParameter', 'test', function () {
-        console.log('print parameter:');
-        console.log(grunt.config.get('aws_s3.previewUpload.uploaddirty'));
-        console.log(grunt.config.get('aws_s3.previewUpload.upload.dirty'));
-        console.log(grunt.config.get('aws_s3.previewUpload.dirtyupload'));
-
-        //console.log(grunt.config.get('aws_s3.previewUpload'));
-
-    });
-
-    grunt.event.on('watch', function (action, filepath) {
-        //https://github.com/gruntjs/grunt-contrib-watch/issues/156
-
-        var tasksToRun = [];
-
-        // A bit of hack, but I need to figure out how to do different actions based on which version of watch I'm running (build or prepare)
-        tasksToRun.push('build');
-
-        grunt.config('watch.main.tasks', tasksToRun);
-
-    });
 };

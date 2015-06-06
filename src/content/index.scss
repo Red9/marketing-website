@@ -10,6 +10,7 @@
 .section {
 
   &.intro .row {
+    min-height: 400px;
     min-height: 50vh;
   }
 
@@ -18,6 +19,7 @@
     @include responsive-background-image('indo_teloislands_ledge', 'jpg');
 
     .row {
+      min-height: 400px;
       min-height: 100vh;
     }
   }
@@ -29,7 +31,6 @@
     .row {
       min-height: 400px;
       min-height: 80vh;
-
     }
   }
 

@@ -2,7 +2,6 @@
   "name": "marketing-website",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:rednine/marketing-website.git"
@@ -11,6 +10,7 @@
   "license": "private",
   "dependencies": {
     "assemble": "0.4.x",
+    "autoprefixer-core": "5.2.x",
     "grunt": "0.4.x",
     "grunt-aws-s3": "0.13.x",
     "grunt-contrib-clean": "0.6.x",
@@ -20,18 +20,21 @@
     "grunt-contrib-copy": "0.8.x",
     "grunt-contrib-cssmin": "0.12.x",
     "grunt-contrib-htmlmin": "0.4.x",
-    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-imagemin": "0.9.x",
     "grunt-contrib-sass": "0.9.x",
     "grunt-contrib-uglify": "0.9.x",
     "grunt-contrib-watch": "0.6.x",
     "grunt-filerev": "2.3.x",
     "grunt-invalidate-cloudfront": "0.1.x",
-    "grunt-newer": "^1.1.0",
-    "grunt-responsive-images": "^0.1.6",
-    "grunt-uncss": "^0.4.2",
+    "grunt-newer": "1.1.x",
+    "grunt-postcss": "0.4.x",
+    "grunt-responsive-images": "0.1.x",
+    "grunt-uncss": "0.4.x",
     "grunt-usemin": "3.0.x",
     "grunt-wiredep": "2.0.x",
     "http-rewrite-middleware": "0.1.x",
+    "imagemin-mozjpeg": "5.1.x",
+    "imagemin-pngquant": "4.1.x",
     "load-grunt-tasks": "3.1.x"
   }
 }
