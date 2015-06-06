@@ -1,0 +1,9 @@
+{
+  "nonresponsive": [
+    "red9-logo.png",
+    "red9-logo-sm.png",
+    "kickstarter-logo-light.png",
+    "favicons/**/*.*",
+    "**/*.gif"
+  ]
+}

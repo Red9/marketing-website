@@ -43,7 +43,7 @@ js: index.js
             <div class="col-sm-6 wow fadeInRight">
                 <img class="img-responsive center-block"
                      alt="device mounted on surfboard"
-                     src="/images/device_on_board_cropped.png"/>
+                    {{{responsiveImage '/images/scad/device_on_board_cropped.png' 12 6}}}/>
             </div>
         </div>
     </div>
@@ -56,10 +56,11 @@ js: index.js
                 <div class="overlay wow fadeIn">
 
 
-                    <h1 class="text-center">Get our <img class="ks-logo-inline"
-                                                         alt="Kickstarter logo"
-                                                         title="Kickstarter"
-                                                         src="/images/kickstarter-logo-light.png"/>
+                    <h1 class="text-center">Get our
+                        <img class="ks-logo-inline"
+                             alt="Kickstarter logo"
+                             title="Kickstarter"
+                             src="/images/kickstarter-logo-light.png"/>
                         updates.</h1>
 
                     <form action="//redninesensor.us10.list-manage.com/subscribe/post?u=8361dd61c85a958aac662c65e&amp;id=f9407d3fd9"
@@ -107,25 +108,8 @@ js: index.js
                         <p class="text-center">Thanks for signing up. Check out
                             our social media!</p>
 
-                        <p class="social-icons text-center">
-                            <a href="https://www.facebook.com/red9surf"
-                               target="_new">
-                                <img class="over facebook"
-                                     src="/images/fb_icon.png"
-                                     alt="Facebook Link"/>
-                            </a>
-                            <a href="http://www.twitter.com/red9surf"
-                               target="_new">
-                                <img class="over twitter"
-                                     src="/images/twitter-icon.png"
-                                     alt="Twitter Link"/>
-                            </a>
-                            <a href="https://www.instagram.com/red9surf"
-                               target="_new">
-                                <img class="over instagram"
-                                     src="/images/instagram_icon_64x64.png"
-                                     alt="Instagram Link"/>
-                            </a>
+                        <p class="text-center">
+                            {{> social-icons}}
                         </p>
                     </div>
                 </div>
@@ -174,17 +158,17 @@ js: index.js
             <div class="col-sm-4 col-padding wow fadeInLeft">
                 <img class="img-responsive center-block"
                      alt="Measurement: Wave Quality"
-                     src="/images/stats1.jpg"/>
+                    {{{responsiveImage '/images/stats1.jpg' 12 4}}}/>
             </div>
             <div class="col-sm-4 col-padding wow fadeInUp">
                 <img class="img-responsive center-block"
                      alt="Measurement: Speed and Distance"
-                     src="/images/stats2.jpg"/>
+                    {{{responsiveImage '/images/stats2.jpg' 12 4}}}/>
             </div>
             <div class="col-sm-4 col-padding wow fadeInRight">
                 <img class="img-responsive center-block"
                      alt="Measurement: Vertical Angle"
-                     src="/images/stats3.jpg"/>
+                    {{{responsiveImage '/images/stats3.jpg' 12 4}}}/>
             </div>
         </div>
 
@@ -192,17 +176,17 @@ js: index.js
             <div class="col-sm-4 col-padding wow fadeInLeft">
                 <img class="img-responsive center-block"
                      alt="Measurement: Rail Angle"
-                     src="/images/stats4.jpg"/>
+                    {{{responsiveImage '/images/stats4.jpg' 12 4}}}/>
             </div>
             <div class="col-sm-4 col-padding wow fadeInUp">
                 <img class="img-responsive center-block"
                      alt="Measurement: Rotation"
-                     src="/images/stats5.jpg"/>
+                    {{{responsiveImage '/images/stats5.jpg' 12 4}}}/>
             </div>
             <div class="col-sm-4 col-padding wow fadeInRight">
                 <img class="img-responsive center-block"
                      alt="Measurement: Power"
-                     src="/images/stats6.jpg"/>
+                    {{{responsiveImage '/images/stats6.jpg' 12 4}}}/>
             </div>
         </div>
 
@@ -220,7 +204,7 @@ js: index.js
             <div class="col-sm-6 col-sm-pull-6 wow fadeInLeft">
                 <img class="img-responsive center-block img-rounded"
                      alt="Example stats page screenshot"
-                     src="/images/session_overview.png"/>
+                    {{{responsiveImage '/images/session_overview.png' 12 6}}}/>
             </div>
         </div>
 
@@ -237,7 +221,7 @@ js: index.js
             <div class="col-sm-6 wow fadeInRight">
                 <img class="img-responsive center-block img-rounded"
                      alt="Example leaderboard screenshot"
-                     src="/images/leaderboard.png"/>
+                    {{{responsiveImage '/images/leaderboard.png' 12 6}}}/>
             </div>
         </div>
 
@@ -252,7 +236,7 @@ js: index.js
             <div class="col-sm-6 col-sm-pull-6 wow fadeInLeft">
                 <img class="img-responsive center-block img-rounded"
                      alt="Example session share image"
-                     src="/images/session_share.png"/>
+                    {{{responsiveImage '/images/session_share.png' 12 6}}}/>
             </div>
         </div>
     </div>

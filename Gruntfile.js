@@ -16,18 +16,24 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: pkg,
+
+        config: {
+            images: require('./src/images/config.json')
+        },
+
+
         // ---------------------------------------------------------------------
         // Serve
         // ---------------------------------------------------------------------
         watch: {
-            main: {
+            service: {
                 options: {
                     livereload: true,
                     livereloadOnError: false,
                     spawn: false // Faster, but more prone to watch failure
                 },
                 files: ['src/**/*.*'],
-                tasks: ['build']
+                tasks: ['<%= grunt.task.current.args[1] %>']
             }
         },
         connect: {
@@ -114,7 +120,8 @@ module.exports = function (grunt) {
                 //ext: '',
                 layout: 'default.hbs',
                 layoutdir: 'src/components/layouts/',
-                partials: ['src/components/partials/**/*.hbs']
+                partials: ['src/components/partials/**/*.hbs'],
+                helpers: ['src/components/helpers/**/*.js']
             },
             pages: {
                 files: [{
@@ -168,14 +175,12 @@ module.exports = function (grunt) {
                     cwd: 'src/content/',
                     src: ['**/*.js'],
                     dest: 'build/'
-                }
-                    , {
-                        expand: true,
-                        cwd: 'src/images/',
-                        src: ['**/*.*', '!backgrounds/**/*'],
-                        dest: 'build/images/'
-                    }
-                ]
+                }, {
+                    expand: true,
+                    cwd: 'src/images/',
+                    src: '<%= config.images.nonresponsive %>',
+                    dest: 'build/images/'
+                }]
             },
             prepare: {
                 files: [{
@@ -187,11 +192,17 @@ module.exports = function (grunt) {
                         '!bower_components/**/*.*'
                     ],
                     dest: 'dist/'
+                }, {
+                    expand: true,
+                    cwd: 'build/',
+                    src: ['**/fonts/**/*.{woff,woff2,ttf,otf,eot,svg}'],
+                    dest: 'dist/fonts/',
+                    flatten: true
                 }]
             }
         },
         responsive_images: {
-            build: {
+            background: {
                 options: {
                     engine: 'im',
                     sizes: [
@@ -222,6 +233,42 @@ module.exports = function (grunt) {
                     cwd: 'src/images/backgrounds/',
                     src: ['**/*.*'],
                     dest: 'build/images/backgrounds/'
+                }]
+            },
+            content: {
+                options: {
+                    engine: 'im',
+                    sizes: [
+                        {
+                            name: 'xs',
+                            width: 100
+                        },
+                        {
+                            name: 'sm',
+                            width: 300
+                        },
+                        {
+                            name: 'md',
+                            width: 600
+                        },
+                        {
+                            name: 'lg',
+                            width: 900
+                        },
+                        {
+                            name: 'xl',
+                            width: 1200
+                        }
+                    ]
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'src/images/',
+                    src: ['**/*.{png,jpg}',
+                        '!backgrounds/**/*.*',
+                        '<%= _.map(config.images.nonresponsive, function(path){return "!" + path}) %>'
+                    ],
+                    dest: 'build/images/'
                 }]
             }
         },
@@ -266,8 +313,13 @@ module.exports = function (grunt) {
                 assetsDirs: 'dist',
                 patterns: {
                     css: [
-                        // Primarily for background-image, but really for any image reference in our CSS.
-                        [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the CSS to reference our revved images']
+                        // Primarily for background-image, but really for any image or fonts referenced in our CSS.
+                        [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the CSS to reference our revved images'],
+
+                        [/(fonts\/.*?\.(?:woff2|woff|ttf|otf|eot|svg))/gm, 'Update the CSS to reference our revved fonts']
+                    ],
+                    html: [
+                        [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the HTML to reference our revved images'],
                     ]
                 }
             }
@@ -283,7 +335,7 @@ module.exports = function (grunt) {
                     unused: true,
                     if_return: true,
                     join_vars: true,
-                    drop_console: true
+                    drop_console: false
                 }
             }
         },
@@ -383,7 +435,7 @@ module.exports = function (grunt) {
                     action: 'upload',
                     expand: true,
                     cwd: 'dist/',
-                    src: ['**/*.gz', 'images/**/*', '!**/*.html.gz'],
+                    src: ['**/*.gz', 'images/**/*', 'fonts/**/*', '!**/*.html.gz'],
                     dest: ''
                 }]
             },
@@ -427,8 +479,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('serve', ['build', 'connect:development', 'watch']);
-    grunt.registerTask('serve-dist', ['prepare', 'connect:dist', 'watch']);
+    grunt.registerTask('serve', ['build', 'connect:development', 'watch:service:build']);
+    grunt.registerTask('serve-dist', ['prepare', 'connect:dist', 'watch:service:prepare']);
 
     grunt.registerTask('build', [
         'sass',
@@ -436,7 +488,8 @@ module.exports = function (grunt) {
         'copy:build',
         'assemble',
         'wiredep:build',
-        'responsive_images:build',
+        'newer:responsive_images:background',
+        'newer:responsive_images:content',
         'newer:imagemin:build'
     ]);
 
@@ -455,7 +508,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('deploy-preview', [
-        'clean:newer',
+        //'clean:newer',
         'prepare',
         'compress:deploy',
         'aws_s3:previewUploadStatic',
