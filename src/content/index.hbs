@@ -3,14 +3,15 @@ title: Red9 Surf Tracking Technology
 description: Surfing technology that helps you have more fun on the water.
 css: index.css
 js: index.js
+canonical: /
 ---
 
 <div class="section device">
     <div class="container">
-        <div class="row row-xs-flex-bottom spaced">
+        <div class="section-row row row-xs-flex-bottom spaced">
             <div class="col-sm-6 col-sm-offset-3 col-xs-12">
                 <div class="overlay wow fadeIn">
-                    <h1>The evolution of surfing.</h1>
+                    <h1>The evolution of surf.</h1>
 
                     <p>With the latest technology inside, our device will help
                         you have more fun out on the water. Tune
@@ -51,10 +52,9 @@ js: index.js
 
 <div class="section signup">
     <div class="container">
-        <div class="row row-sm-flex-center">
+        <div class="section-row row row-sm-flex-center">
             <div class="col-sm-10 col-sm-offset-1 col-xs-12">
-                <div class="overlay wow fadeIn">
-
+                <div class="overlay wow fadeIn row">
 
                     <h1 class="text-center">Get our
                         <img class="ks-logo-inline"
@@ -66,28 +66,44 @@ js: index.js
                     <form action="//redninesensor.us10.list-manage.com/subscribe/post?u=8361dd61c85a958aac662c65e&amp;id=f9407d3fd9"
                           method="post" id="subscribe-form"
                           name="mc-embedded-subscribe-form"
-                          class="validate form-inline text-center"
-                          target="_blank" novalidate>
+                          class="form-horizontal"
+                          target="_blank">
                         <div class="form-group">
-                            <label for="mce-FNAME" class="sr-only">First
-                                Name </label>
-                            <input type="text" value="" name="FNAME"
-                                   class="form-control" id="mce-FNAME"
-                                   placeholder="First name">
+                            <label for="mce-FNAME"
+                                   class="col-sm-4 col-sm-offset-1 control-label">
+                                First Name
+                            </label>
+
+                            <div class="col-sm-4">
+                                <input type="text" value="" name="FNAME"
+                                       class="form-control" id="mce-FNAME"
+                                       placeholder="eg. John">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="mce-LNAME" class="sr-only">Last
-                                Name </label>
-                            <input type="text" value="" name="LNAME"
-                                   class="form-control" id="mce-LNAME"
-                                   placeholder="Last name">
+                            <label for="mce-LNAME"
+                                   class="col-sm-4 col-sm-offset-1 control-label">
+                                Last Name</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" value="" name="LNAME"
+                                       class="form-control" id="mce-LNAME"
+                                       placeholder="eg. Doe">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="mce-EMAIL" class="sr-only">Email Address
-                                (required)</label>
-                            <input type="email" value="" name="EMAIL"
-                                   class="required email form-control"
-                                   id="mce-EMAIL" placeholder="Email address">
+                            <label for="mce-EMAIL"
+                                   class="col-sm-4 col-sm-offset-1 control-label">
+                                Email&nbsp;*
+                            </label>
+
+                            <div class="col-sm-4">
+                                <input type="email" value="" name="EMAIL"
+                                       class="form-control"
+                                       id="mce-EMAIL"
+                                       placeholder="eg. john.doe@gmail.com"
+                                       required>
+                            </div>
                         </div>
                         <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                         <div style="position: absolute; left: -5000px;">
@@ -99,9 +115,10 @@ js: index.js
                                    tabindex="-1" value=""
                                    id="b_8361dd61c85a958aac662c65e_f9407d3fd9">
                         </div>
-                        <input type="submit" value="Subscribe" name="subscribe"
+                        <input type="submit" value="Subscribe"
+                               name="subscribe"
                                id="mc-embedded-subscribe"
-                               class="btn btn-rednine">
+                               class="btn btn-rednine col-sm-offset-5 col-sm-4">
                     </form>
 
                     <div class="hidden" id="subscribe-form-complete">
@@ -244,13 +261,13 @@ js: index.js
 
 <div class="section conclusion">
     <div class="container">
-        <div class="row row-sm-flex-center">
+        <div class="section-row row row-sm-flex-center">
             <div class="col-sm-8 col-sm-offset-2 col-xs-12">
                 <div class="overlay wow fadeIn">
                     <h1 class="text-center">Make the most of your surf.</h1>
 
                     <button class="btn btn-rednine btn-lg btn-block goto-signup">
-                        Sign up now.
+                        Join the Red9 Mailing List.
                     </button>
 
                     <p></p>

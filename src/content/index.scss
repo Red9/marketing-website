@@ -9,16 +9,11 @@
 
 .section {
 
-  &.intro .row {
-    min-height: 400px;
-    min-height: 50vh;
-  }
-
   &.signup {
 
     @include responsive-background-image('indo_teloislands_ledge', 'jpg');
 
-    .row {
+    .section-row {
       min-height: 400px;
       min-height: 100vh;
     }
@@ -28,7 +23,7 @@
 
     @include responsive-background-image('device_front_light_on', 'jpg');
 
-    .row {
+    .section-row {
       min-height: 400px;
       min-height: 80vh;
     }
@@ -38,9 +33,17 @@
 
     @include responsive-background-image('sunset_surf', 'jpg');
 
-    .row {
+    .section-row {
       min-height: 400px;
       min-height: 70vh;
     }
   }
+}
+
+input:invalid.touched {
+  box-shadow: 0 0 2em red;
+}
+
+input:valid.touched {
+  box-shadow: 0 0 2em green;
 }

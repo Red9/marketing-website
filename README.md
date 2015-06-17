@@ -14,6 +14,11 @@ sudo apt-get install libtool automake autoconf nasm
 # For responsive-images resizing
 sudo apt-get install imagemagick
 
+# For AWS CLI
+sudo apt-get install awscli
+aws configure
+# Enter your access key ID and secrete access key
+
 npm install
 bower install
 ```

@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="components/scss/main.css"/>
     <!-- endbuild -->
 
+    {{#if page.canonical}}
+        <link rel="canonical"
+              href="https://redninesensor.com{{page.canonical}}"/>
+    {{/if}}
+
     {{#if page.css}}
         <!-- build:css css/page.{{page.css}} -->
         <link rel="stylesheet" href="{{page.css}}"/>
@@ -44,27 +49,32 @@
             <div class="col-xs-4">
                 <h4>Technology</h4>
                 <ul class="list-unstyled">
-                    <li>Device</li>
-                    <li>Science</li>
-                    <li>App</li>
+                    <li><a href="/features">Features</a></li>
+                    <li><a href="/device">Device</a></li>
                 </ul>
             </div>
             <div class="col-xs-4">
                 <h4>Company</h4>
                 <ul class="list-unstyled">
-                    <li>About</li>
-                    <li>Media Package</li>
-                    <li>Legal</li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/media">Media Package</a></li>
+                    <li><a href="/legal">Legal</a></li>
                 </ul>
             </div>
             <div class="col-xs-4">
                 <h4>Social</h4>
-                <p>{{> social-icons}}</p>
+                <ul class="list-unstyled">
+                    <li>{{> social-icons}}</li>
+                    <li>
+                        <a href="mailto:hello@redninesensor.com">hello@redninesensor.com</a>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <p class="text-center">&copy; Red9 2015. All rights reserved.</p>
+                <p class="text-center">&copy; Red9 2015. All rights
+                    reserved.</p>
             </div>
         </div>
     </footer>
@@ -81,6 +91,8 @@
     <script src="{{page.js}}"></script>
     <!-- endbuild -->
 {{/if}}
+
+{{> google-analytics}}
 
 </body>
 </html>

@@ -477,6 +477,9 @@ module.exports = function (grunt) {
                 }
             }
         }
+
+        //  aws s3 sync s3://preview.redninesensor.com/ s3://redninesensor.com/ --exclude robots.txt
+        // --dryrun
     });
 
     grunt.registerTask('serve', ['build', 'connect:development', 'watch:service:build']);

@@ -22,6 +22,11 @@
         $('#subscribe-form-complete').removeClass('hidden');
     });
 
+    // Taken from http://stackoverflow.com/a/17369386/2557842
+    $('input').one('blur keydown', function() {
+        $(this).addClass('touched');
+    });
+
     new WOW().init();
 
 })();
