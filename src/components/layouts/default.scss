@@ -12,14 +12,12 @@ body {
 }
 
 .btn-rednine {
-  background: $logoblack;
+  background: $logored;
   color: $logowhite;
 
   &:hover, &:focus, &:active, &.active, .open > &.dropdown-toggle {
-    background: $logored;
+    background: $logoblack;
     color: $logowhite;
-
-    border-radius: 0;
   }
 
   &:active, &.active {
@@ -48,6 +46,12 @@ a {
   margin-top: 5em;
   margin-bottom: 5em;
 }
+
+.row.spaced-short {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 
 @media (min-width: 768px) {
   .row-sm-whitespace {

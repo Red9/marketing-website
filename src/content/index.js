@@ -1,16 +1,7 @@
 (function () {
-    console.log('Are you as stoked for surfing tech as we are? Apply now!');
-
-    $('button.goto-signup').on('click', function () {
-        // Scroll to the actual signup button.
-        $('html,body').animate({
-            scrollTop: $(".section.signup").offset().top
-        }, 'slow');
-    });
-
     // Make sure that button return to "default" state after being pressed.
     // http://stackoverflow.com/a/23444942/2557842
-    $(".btn").mouseup(function(){
+    $(".btn").mouseup(function () {
         $(this).blur();
     });
 
@@ -23,10 +14,26 @@
     });
 
     // Taken from http://stackoverflow.com/a/17369386/2557842
-    $('input').one('blur keydown', function() {
+    $('input').one('blur keydown', function () {
         $(this).addClass('touched');
     });
 
-    new WOW().init();
+    function sliderheight() {
+        var divHeight = $('.f1 img').height();
+
+        // We run this little trick to get a "dynamic" height, but we have to wait until the images load.
+        if (divHeight === 0) {
+            console.log('.imagecycle height unknown. Checking again in a bit.');
+            setTimeout(sliderheight, 50);
+        } else {
+            console.log('Setting .imagecycle height to: ' + divHeight);
+            $('.imagecycle').css({'height': divHeight});
+        }
+    }
+
+    sliderheight();
+    $(window).resize(sliderheight);
+
+    $('.swipebox-video').swipebox({autoplayVideos: true});
 
 })();

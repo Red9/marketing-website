@@ -1,53 +1,20 @@
 @import "social.scss";
 @import "variables.scss";
 
-.overlay {
-  background-color: rgba($schemeforeground, 0.6);
-  padding: 1.5em;
-  border-radius: 1em;
-  margin-top: 2em;
-
-  h1, h2, h3,
-  h4, h5, h6, p, label {
-    color: $logowhite;
-
-    small {
-      color: $logowhite;
-    }
-
-  }
-}
-
-//.card {
-//  background-color: $schemeforeground;
-//  border: 2px solid $schemeselect;
-//  border-radius: 1em;
-//  padding: 1em;
-//}
-
-// Taken from http://www.w3.org/Style/Examples/007/leaders.en.html
-
-ul.leaders {
-  max-width: 40em;
-  padding: 0;
-  overflow-x: hidden;
-  list-style: none;
-
-  li:before {
-    float: left;
-    width: 0;
-    white-space: nowrap;
-    content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
-  }
-
-  span:first-child {
-    padding-right: 0.33em;
-    background: white;
-  }
-
-  span + span {
-    float: right;
-    padding-left: 0.33em;
-    background: white;
+.justify-single-line {
+  // We want to justify the given text, but justify doesn't work on the
+  // last line. So we add another line, and then not show that line.
+  // Taken from http://blog.vjeux.com/2011/css/css-one-line-justify.html
+  // Taken from http://stackoverflow.com/a/23038536/2557842
+  // Should not be used on something that will break to multiple lines.
+  text-align: justify;
+  height: 1em;
+  line-height: 1;
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 1%;
+    font-size: 0.0001em;
   }
 }

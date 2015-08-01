@@ -47,7 +47,10 @@ module.exports = function (grunt) {
 
                     middlewares.push(rewriteModule.getMiddleware([
                         {
-                            from: '(^((?!css|html|js|images|\/$).)*$)',
+                            // This line is a bit fragile when you consider that we
+                            // want to serve stuff from bower_components, and we
+                            // don't have a
+                            from: '(^((?!css|html|js|images|img|fonts|\/$).)*$)',
                             to: "$1.html"
                         }
                     ]));
@@ -106,6 +109,12 @@ module.exports = function (grunt) {
                     overrides: {
                         bootstrap: { // We don't want the bootstrap JS, so we set main to just CSS
                             main: 'dist/css/bootstrap.css'
+                        },
+                        swipebox: {
+                            main: [
+                                'src/css/swipebox.min.css', // For some reason this doesn't work with the non-minified css
+                                'src/js/jquery.swipebox.js'
+                            ]
                         }
                     }
                 }
@@ -197,6 +206,14 @@ module.exports = function (grunt) {
                     cwd: 'build/',
                     src: ['**/fonts/**/*.{woff,woff2,ttf,otf,eot,svg}'],
                     dest: 'dist/fonts/',
+                    flatten: true
+                }, {
+                    // This is a terrible hack! Also affects the usemin pattern below.
+                    // Should be something smarter... -SRLM
+                    expand: true,
+                    cwd: 'build/',
+                    src: ['bower_components/swipebox/src/img/*.{png,svg,gif}'],
+                    dest: 'dist/img/',
                     flatten: true
                 }]
             }
@@ -316,6 +333,9 @@ module.exports = function (grunt) {
                         // Primarily for background-image, but really for any image or fonts referenced in our CSS.
                         [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the CSS to reference our revved images'],
 
+                        // A swipebox thing...: terrible hack, see above
+                        //[/(img\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the CSS to reference our revved images'],
+
                         [/(fonts\/.*?\.(?:woff2|woff|ttf|otf|eot|svg))/gm, 'Update the CSS to reference our revved fonts']
                     ],
                     html: [
@@ -346,7 +366,7 @@ module.exports = function (grunt) {
                     stylesheets: ['.tmp/concat/css/site.css'],
                     // ignore list taken from: ???
                     ignore: [
-                        /(#|\.)fancybox(\-[a-zA-Z]+)?/,
+                        ///(#|\.)fancybox(\-[a-zA-Z]+)?/,
                         // Bootstrap selectors added via JS
                         /\w\.in/,
                         ".fade",
@@ -355,10 +375,12 @@ module.exports = function (grunt) {
                         /(#|\.)navbar(\-[a-zA-Z]+)?/,
                         /(#|\.)dropdown(\-[a-zA-Z]+)?/,
                         /(#|\.)(open)/,
-                        // currently only in a IE conditional, so uncss doesn't see it
+                        // currently only in a IE conditional, so uncss doesn't see it (? SRLM)
                         ".close",
                         ".alert-dismissible",
-                        ".animated"
+                        ".animated",
+                        '.swipebox-video',
+                        /(#|\.)swipebox(\-[a-zA-Z]+)?/
                     ]
                 },
                 files: {
@@ -389,7 +411,10 @@ module.exports = function (grunt) {
                 length: 8
             },
             assets: {
-                src: ['dist/**/*.*', '!dist/**/*.html', '!dist/**/favicons/**/*']
+                src: ['dist/**/*.*', '!dist/**/*.html', '!dist/**/favicons/**/*',
+
+                    '!dist/img/**/*.*' // A terrible hack for swipebox!
+                ]
             }
         },
         // ---------------------------------------------------------------------

@@ -19,13 +19,13 @@ $colHighlight: $logoblack;
 
   text-decoration: none;
 
-  color: $logowhite;
+  color: $logoblack;
 }
 
 $dropDown: false;
 .navbar-branded {
-  background-color: $bgDefault;
-  border-color: $bgHighlight;
+  background-color: transparent;
+  border-color: transparent;
 
   .btn-navbar {
     background: $logoblack;

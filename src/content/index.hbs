@@ -6,278 +6,182 @@ js: index.js
 canonical: /
 ---
 
-<div class="section device">
-    <div class="container">
-        <div class="section-row row row-xs-flex-bottom spaced">
-            <div class="col-sm-6 col-sm-offset-3 col-xs-12">
-                <div class="overlay wow fadeIn">
-                    <h1>The evolution of surf.</h1>
+<div class="section landing">
+    <div class="container-fluid">
+        <div class="section-row row row-sm-flex-bottom">
+            <div class="col-sm-5">
 
-                    <p>With the latest technology inside, our device will help
-                        you have more fun out on the water. Tune
-                        your paddling skills, catch more waves, and brag to your
-                        friends. All in a device so small
-                        you'll forget it's there.</p>
-
-                    <button type="button"
-                            class="btn btn-rednine btn-lg btn-block goto-signup">
-                        Sign up now.
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="section basicinfo">
-    <div class="container">
-        <div class="row spaced"></div>
-        <div class="row row-sm-flex-center">
-            <div class="col-sm-6 wow fadeInLeft">
-                <h1>How it works.</h1>
-                <ol>
-                    <li><a href="/device">Record your surf sessions.</a></li>
-                    <li><a href="#app">Open the Red9 App.</a></li>
-                    <li><a href="#stats">See your stats.</a></li>
-                </ol>
-            </div>
-            <div class="col-sm-6 wow fadeInRight">
                 <img class="img-responsive center-block"
-                     alt="device mounted on surfboard"
-                    {{{responsiveImage '/images/scad/device_on_board_cropped.png' 12 6}}}/>
+                     alt="hand holding Red9 device"
+                    {{{responsiveImage '/images/device_hand_no_background.png' 12 8}}}/>
             </div>
-        </div>
-    </div>
-</div>
+            <div class="col-sm-6  col-sm-offset-1">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="banner justify-single-line">
+                            EVERY MOVE COUNTS</h1>
 
-<div class="section signup">
-    <div class="container">
-        <div class="section-row row row-sm-flex-center">
-            <div class="col-sm-10 col-sm-offset-1 col-xs-12">
-                <div class="overlay wow fadeIn row">
-
-                    <h1 class="text-center">Get our
-                        <img class="ks-logo-inline"
-                             alt="Kickstarter logo"
-                             title="Kickstarter"
-                             src="/images/kickstarter-logo-light.png"/>
-                        updates.</h1>
-
-                    <form action="//redninesensor.us10.list-manage.com/subscribe/post?u=8361dd61c85a958aac662c65e&amp;id=f9407d3fd9"
-                          method="post" id="subscribe-form"
-                          name="mc-embedded-subscribe-form"
-                          class="form-horizontal"
-                          target="_blank">
-                        <div class="form-group">
-                            <label for="mce-FNAME"
-                                   class="col-sm-4 col-sm-offset-1 control-label">
-                                First Name
-                            </label>
-
-                            <div class="col-sm-4">
-                                <input type="text" value="" name="FNAME"
-                                       class="form-control" id="mce-FNAME"
-                                       placeholder="eg. John">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="mce-LNAME"
-                                   class="col-sm-4 col-sm-offset-1 control-label">
-                                Last Name</label>
-
-                            <div class="col-sm-4">
-                                <input type="text" value="" name="LNAME"
-                                       class="form-control" id="mce-LNAME"
-                                       placeholder="eg. Doe">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="mce-EMAIL"
-                                   class="col-sm-4 col-sm-offset-1 control-label">
-                                Email&nbsp;*
-                            </label>
-
-                            <div class="col-sm-4">
-                                <input type="email" value="" name="EMAIL"
-                                       class="form-control"
-                                       id="mce-EMAIL"
-                                       placeholder="eg. john.doe@gmail.com"
-                                       required>
-                            </div>
-                        </div>
-                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <div style="position: absolute; left: -5000px;">
-                            <label for="b_8361dd61c85a958aac662c65e_f9407d3fd9"
-                                   class="sr-only">Real people should not
-                                fill this in.</label>
-                            <input type="text"
-                                   name="b_8361dd61c85a958aac662c65e_f9407d3fd9"
-                                   tabindex="-1" value=""
-                                   id="b_8361dd61c85a958aac662c65e_f9407d3fd9">
-                        </div>
-                        <input type="submit" value="Subscribe"
-                               name="subscribe"
-                               id="mc-embedded-subscribe"
-                               class="btn btn-rednine col-sm-offset-5 col-sm-4">
-                    </form>
-
-                    <div class="hidden" id="subscribe-form-complete">
-                        <p class="text-center">Thanks for signing up. Check out
-                            our social media!</p>
-
-                        <p class="text-center">
-                            {{> social-icons}}
-                        </p>
+                        <p class="text-justify">Every stroke,
+                            every turn, every
+                            wave. Red9 gives you the information and
+                            recommendations you need to be a
+                            better&nbsp;surfer.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="row">
+                    <div class="col-sm-7 col-md-8">
 
-
-<div class="section video">
-    <div class="container">
-        <div class="row spaced">
-            <div class="col-xs-12 wow fadeIn">
-                <h1 class="text-center">Watch the video.</h1>
-
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="https://player.vimeo.com/video/117357439"
-                            class="embed-responsive-item"
-                            frameborder="0" webkitallowfullscreen
-                            mozallowfullscreen allowfullscreen></iframe>
+                        <p class="text-justify">Share your
+                            statistics and have a
+                            virtual competition
+                            against&nbsp;friends.</p>
+                    </div>
+                    <div class="col-sm-5 col-md-4">
+                        <a class="btn btn-rednine btn-block btn-xs swipebox-video"
+                           rel="vimeo"
+                           href="http://vimeo.com/117357439">
+                            <span class="fa fa-play fa-md"></span>&nbsp;
+                            Watch the video
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="row spaced-short row-sm-flex-center">
+                    <div class="col-xs-12 col-sm-2 col-sm-offset-1">
+                        <img class="img-responsive center-block"
+                             alt="Surfer with Red9 device icon"
+                            {{{responsiveImage '/images/icon_surfer.png' 4}}}/>
 
-<div class="section stats">
-    <div class="container">
+                        <div class="caption">
+                            <p>Set your device and go surf</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="img-responsive center-block hidden-xs"
+                             alt="right arrow"
+                            {{{responsiveImage '/images/arrow_straight.png' 12}}}/>
 
-        <div class="row spaced wow fadeIn">
-            <div class="col-sm-offset-3 col-sm-6">
-                <h1>Red9 does data science.</h1>
+                        <img class="center-block visible-xs"
+                             alt="down arrow" height="100px"
+                             src="/images/down_arrow-xl.png"/>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <img class="img-responsive center-block"
+                             alt="Red9 DSP icon"
+                            {{{responsiveImage '/images/icon_r9dsp.png' 4}}}/>
 
-                <p>We believe that technology improves lives, our data science
-                    proves it.</p>
+                        <div class="caption">
+                            <p>Analyze your data with Red9's Data Science
+                                Platform</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="img-responsive center-block hidden-xs"
+                             alt="right arrow"
+                            {{{responsiveImage '/images/arrow_straight.png' 12}}}/>
 
-                <p>Become a better surfer with advanced algorithms that are
-                    customized to you. Surf with our device, and
-                    notice patterns and improvements that you've never even
-                    thought of before. Yeah. We're that
-                    good.</p>
-            </div>
-        </div>
+                        <img class="center-block visible-xs"
+                             alt="down arrow" height="100px"
+                             src="/images/down_arrow-xl.png"/>
+                    </div>
+                    <div class="col-xs-12 col-sm-2">
+                        <img class="img-responsive center-block" id="phoneStep"
+                             alt="Red9 iPhone app"
+                            {{{responsiveImage '/images/iphone_app.png' 4}}}/>
 
-        <div class="row">
-            <div class="col-sm-4 col-padding wow fadeInLeft">
-                <img class="img-responsive center-block"
-                     alt="Measurement: Wave Quality"
-                    {{{responsiveImage '/images/stats1.jpg' 12 4}}}/>
-            </div>
-            <div class="col-sm-4 col-padding wow fadeInUp">
-                <img class="img-responsive center-block"
-                     alt="Measurement: Speed and Distance"
-                    {{{responsiveImage '/images/stats2.jpg' 12 4}}}/>
-            </div>
-            <div class="col-sm-4 col-padding wow fadeInRight">
-                <img class="img-responsive center-block"
-                     alt="Measurement: Vertical Angle"
-                    {{{responsiveImage '/images/stats3.jpg' 12 4}}}/>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-4 col-padding wow fadeInLeft">
-                <img class="img-responsive center-block"
-                     alt="Measurement: Rail Angle"
-                    {{{responsiveImage '/images/stats4.jpg' 12 4}}}/>
-            </div>
-            <div class="col-sm-4 col-padding wow fadeInUp">
-                <img class="img-responsive center-block"
-                     alt="Measurement: Rotation"
-                    {{{responsiveImage '/images/stats5.jpg' 12 4}}}/>
-            </div>
-            <div class="col-sm-4 col-padding wow fadeInRight">
-                <img class="img-responsive center-block"
-                     alt="Measurement: Power"
-                    {{{responsiveImage '/images/stats6.jpg' 12 4}}}/>
-            </div>
-        </div>
-
-
-        <div class="row spaced row-sm-flex-center row-sm-whitespace">
-            <div class="col-sm-6 col-sm-push-6 wow fadeInRight">
-                <h1>Get your data.</h1>
-
-                <p>Get all your most important stats, in one place and ready to
-                    review. Learn the best way to paddle,
-                    customized for you. Discover what helps you catch the best
-                    waves. Red9's advanced data science can
-                    help you get better, fast.</p>
-            </div>
-            <div class="col-sm-6 col-sm-pull-6 wow fadeInLeft">
-                <img class="img-responsive center-block img-rounded"
-                     alt="Example stats page screenshot"
-                    {{{responsiveImage '/images/session_overview.png' 12 6}}}/>
-            </div>
-        </div>
-
-
-        <div class="row spaced row-sm-flex-center row-sm-whitespace">
-            <div class="col-sm-6 wow fadeInLeft">
-                <h1>Compete with the locals.</h1>
-
-                <p>Think you're the best ripper on your break? Compete with your
-                    friends and others who surf at your
-                    favorite spots, and be the best.</p>
-
-            </div>
-            <div class="col-sm-6 wow fadeInRight">
-                <img class="img-responsive center-block img-rounded"
-                     alt="Example leaderboard screenshot"
-                    {{{responsiveImage '/images/leaderboard.png' 12 6}}}/>
-            </div>
-        </div>
-
-        <div class="row spaced row-sm-flex-center row-sm-whitespace">
-            <div class="col-sm-6 col-sm-push-6 wow fadeInRight">
-                <h1>Share your achievements.</h1>
-
-                <p>Get a custom session summary that you can share on Facebook
-                    and other social media sites. You know
-                    you're the best, let everyone else know too.</p>
-            </div>
-            <div class="col-sm-6 col-sm-pull-6 wow fadeInLeft">
-                <img class="img-responsive center-block img-rounded"
-                     alt="Example session share image"
-                    {{{responsiveImage '/images/session_share.png' 12 6}}}/>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="section conclusion">
-    <div class="container">
-        <div class="section-row row row-sm-flex-center">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                <div class="overlay wow fadeIn">
-                    <h1 class="text-center">Make the most of your surf.</h1>
-
-                    <button class="btn btn-rednine btn-lg btn-block goto-signup">
-                        Join the Red9 Mailing List.
-                    </button>
-
-                    <p></p>
-
-                    <p class="text-center">
-                        {{> social-icons}}
-                    </p>
+                        <div class="caption">
+                            <p>Visualize your sessions</p>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="row spaced-short">
+                    <h3 class="text-center">CATCH MORE WAVES. HAVE MORE
+                        FUN.</h3>
+                </div>
+                <div class="row imagecycle spaced-short">
+                    <!-- Surfboard images -->
+                    <div class="f1">
+                        <img class="img-responsive"
+                             alt="fishboard with Red9 device"
+                            {{{responsiveImage '/images/surfboard_fishboard.png' 6}}}/>
+                    </div>
+                    <div class="f2">
+                        <img class="img-responsive"
+                             alt="shortboard with Red9 device"
+                            {{{responsiveImage '/images/surfboard_shortboard.png' 6}}}/>
+                    </div>
+                    <div class="f3">
+                        <img class="img-responsive"
+                             alt="soft top board with Red9 device"
+                            {{{responsiveImage '/images/surfboard_soft_top_board.png' 6}}}/>
+                    </div>
+                </div>
+
+                <div class="row signup-form">
+                    <div class="col-xs-12">
+                        <h4 class="text-center">Sign up now and get the latest
+                            <img class="ks-logo-inline"
+                                 alt="Kickstarter logo"
+                                 title="Kickstarter"
+                                 src="/images/kickstarter-logo-light.png"/>
+                            launch updates!</h4>
+                        <h5 class="text-center">Be the first to know: there will
+                            be a limited number of discounted devices!</h5>
+
+                        <form action="//redninesensor.us10.list-manage.com/subscribe/post?u=8361dd61c85a958aac662c65e&amp;id=f9407d3fd9"
+                              method="post" id="subscribe-form"
+                              name="mc-embedded-subscribe-form"
+                              class="form-inline"
+                              target="_blank">
+
+                            <input type="text" value="" name="FNAME"
+                                   class="form-control" id="mce-FNAME"
+                                   placeholder="First name">
+
+                            <input type="text" value="" name="LNAME"
+                                   class="form-control" id="mce-LNAME"
+                                   placeholder="Last name">
+
+                            <input type="email" value="" name="EMAIL"
+                                   class="form-control"
+                                   id="mce-EMAIL"
+                                   placeholder="Email address"
+                                   required>
+
+                            <input type="submit" value="Subscribe"
+                                   name="subscribe"
+                                   id="mc-embedded-subscribe"
+                                   class="btn btn-rednine">
+
+
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;">
+                                <label for="b_8361dd61c85a958aac662c65e_f9407d3fd9"
+                                       class="sr-only">Real people should not
+                                    fill this in.</label>
+                                <input type="text"
+                                       name="b_8361dd61c85a958aac662c65e_f9407d3fd9"
+                                       tabindex="-1" value=""
+                                       id="b_8361dd61c85a958aac662c65e_f9407d3fd9">
+                            </div>
+
+                        </form>
+
+                        <div class="hidden" id="subscribe-form-complete">
+                            <p class="text-center">Thanks for signing up. Check
+                                out
+                                our social media!</p>
+
+                            <p class="text-center">
+                                {{> social-icons}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row spaced-short"></div>
             </div>
         </div>
     </div>
 </div>
-

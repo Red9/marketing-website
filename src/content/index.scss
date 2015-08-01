@@ -3,39 +3,159 @@
 @import "../components/scss/mixins";
 
 .ks-logo-inline {
-  height: 30px;
-  transform: translateY(-4px);
+  margin-top: 20px;
+  height: 20px;
+  transform: translateY(-12px);
+}
+
+.caption {
+
+  // For simple (small) cases we just want to center the text.
+  p {
+    text-align: center;
+  }
+
+  // We only want to do this fancy bit when it's laid out horizontally.
+
+  // sm ++
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    width: 150%; // Set it bigger so that we overflow into the arrow area a bit.
+    p {
+      position: relative;
+      right: -50%;
+    }
+  }
+}
+
+.signup-form {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  form {
+
+    input {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    @media (max-width: 767px) {
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+
+    @media (min-width: 992px) {
+      input {
+        &[type="text"] {
+          width: 20%;
+        }
+        &[type="email"] {
+          width: 40%;
+        }
+        &[type="submit"] {
+          width: 18.5%;
+        }
+      }
+    }
+  }
 }
 
 .section {
 
-  &.signup {
+  // Hack...
+  #phoneStep {
+    max-height: 200px;
+  }
 
-    @include responsive-background-image('indo_teloislands_ledge', 'jpg');
+  &.landing {
+
+
+    padding-top: 1em;
+
+    @include responsive-background-image('blury_beach', 'jpg');
 
     .section-row {
-      min-height: 400px;
+      min-height: 450px;
       min-height: 100vh;
     }
-  }
 
-  &.device {
+    .banner {
+      // xs
+      font-size: 2.5em;
+      font-size: 8.1vw;
 
-    @include responsive-background-image('device_front_light_on', 'jpg');
+      // The 'E' in "Every Move Counts" font seems to be have a space on the left hand side.
+      // We'll hack fix it.
+      width: 101.2%;
+      transform: translatex(-0.6%);
 
-    .section-row {
-      min-height: 400px;
-      min-height: 80vh;
+
+      // sm ++
+      @media (min-width: 768px) {
+        font-size: 4em;
+        font-size: 4.2vw;
+      }
+      @media (min-width: 992px) {
+        font-size: 4em;
+        font-size: 4.4vw;
+      }
     }
-  }
 
-  &.conclusion {
+    .imagecycle {
 
-    @include responsive-background-image('sunset_surf', 'jpg');
+      position: relative;
 
-    .section-row {
-      min-height: 400px;
-      min-height: 70vh;
+      width: 100%;
+      //height: 10em;
+
+      div {
+        //margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        -webkit-animation-name: imagecyclefade;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 6s;
+        animation-name: imagecyclefade;
+        animation-iteration-count: infinite;
+        animation-duration: 6s;
+
+        &.f1 {
+        }
+        &.f2 {
+          -webkit-animation-delay: -2s;
+        }
+        &.f3 {
+          -webkit-animation-delay: -4s;
+        }
+        img {
+          // This little trick is used to center the image, even though we have an absolute position.
+          position: relative;
+          left: -50%;
+        }
+      }
+    }
+
+    @-webkit-keyframes imagecyclefade {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      33% {
+        opacity: 1;
+      }
+      53% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
     }
   }
 }

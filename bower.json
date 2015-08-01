@@ -14,9 +14,8 @@
   "dependencies": {
     "bootstrap": "3.3.x",
     "jquery": "2.1.x",
-    "animate.css": "3.3.x",
-    "wow.js": "1.1.x",
     "font-awesome": "4.3.x",
-    "picturefill": "~2.3.1"
+    "picturefill": "~2.3.1",
+    "swipebox": "~1.4.1"
   }
 }
