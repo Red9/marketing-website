@@ -42,6 +42,20 @@ a {
   }
 }
 
+a.legal-href {
+  color: #999999;
+
+  &:hover, &:focus, &:active, &.active {
+    color: $logored;
+  }
+
+  &:active, &.active {
+    color: $logowhite;
+  }
+}
+
+
+
 .row.spaced {
   margin-top: 5em;
   margin-bottom: 5em;

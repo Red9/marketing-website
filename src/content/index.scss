@@ -13,10 +13,17 @@
   // For simple (small) cases we just want to center the text.
   p {
     text-align: center;
-    font-size: 0.9em;
   }
 
   // We only want to do this fancy bit when it's laid out horizontally.
+
+  @media (max-width: 767px) {
+    p {
+      font-size: 1.3em;
+      padding-top: 0.45em;
+      word-spacing: 0.1em;
+    }
+  }
 
   // sm ++
   @media (min-width: 768px) {
@@ -27,7 +34,28 @@
     p {
       position: relative;
       right: -50%;
+      font-size: 0.9em;
     }
+  }
+}
+
+.navbar-branded {
+  @media(max-width: 767px) {
+    background-color: rgba($logoblack, 0.25);
+  }
+}
+
+.vertical-arrow {
+  margin-top: 6em;
+  margin-bottom: 1em;
+  max-height: 5.5em;
+}
+
+.horizontal-arrow {
+  // md ++
+  @media (min-width: 992px) {
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
 
@@ -67,15 +95,20 @@
 
 .section {
 
-  // Hack...
-  #phoneStep {
-    max-height: 200px;
-  }
-
   &.landing {
 
+    // sm ++
+    @media (min-width: 768px) {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
 
     padding-top: 1em;
+
+    // Give space for the nav bar
+    @media(max-width: 767px) {
+      padding-top: 5em;
+    }
 
     @include responsive-background-image('blury_beach', 'jpg');
 
@@ -94,15 +127,14 @@
       width: 101.2%;
       transform: translatex(-0.6%);
 
-
       // sm ++
       @media (min-width: 768px) {
         font-size: 4em;
-        font-size: 4.2vw;
+        font-size: 4.1vw;
       }
       @media (min-width: 992px) {
         font-size: 4em;
-        font-size: 4.4vw;
+        font-size: 4.25vw;
       }
     }
 
