@@ -436,13 +436,16 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        aws: grunt.file.readJSON('private/preview.json'), // Read the file
+        aws: {
+            preview: grunt.file.readJSON('private/preview.json'),
+            production: grunt.file.readJSON('private/production.json')
+        },
         aws_s3: {
             options: {
                 //debug: true,
-                accessKeyId: '<%= aws.AWSAccessKeyId %>', // Use the variables
-                secretAccessKey: '<%= aws.AWSSecretKey %>', // You can also use env variables
-                region: '<%= aws.region %>',
+                accessKeyId: '<%= aws.preview.AWSAccessKeyId %>', // Use the variables
+                secretAccessKey: '<%= aws.preview.AWSSecretKey %>', // You can also use env variables
+                region: '<%= aws.preview.region %>',
                 uploadConcurrency: 10, // 10 simultaneous uploads
                 downloadConcurrency: 10, // 10 simultaneous downloads
                 differential: true, // Only uploads the files that have changed
@@ -485,13 +488,29 @@ module.exports = function (grunt) {
             }
         },
         invalidate_cloudfront: {
-            options: {
-                key: '<%= aws.AWSAccessKeyId %>', // Use the variables
-                secret: '<%= aws.AWSSecretKey %>', // You can also use env variables
-                distribution: '<%= aws.cloudfrontDistribution %>'
-                //distribution: 'TESTING'
-            },
             preview: {
+                options: {
+                    key: '<%= aws.preview.AWSAccessKeyId %>', // Use the variables
+                    secret: '<%= aws.preview.AWSSecretKey %>', // You can also use env variables
+                    distribution: '<%= aws.preview.cloudfrontDistribution %>'
+                    //distribution: 'TESTING'
+                },
+                expand: true,
+                cwd: 'dist/',
+                src: '**/*.html',
+                dest: '',
+                filter: 'isFile',
+                rename: function (err, src) {
+                    return src.slice(0, -5); // Remove the known .html extension.
+                }
+            },
+            production: {
+                options: {
+                    key: '<%= aws.production.AWSAccessKeyId %>', // Use the variables
+                    secret: '<%= aws.production.AWSSecretKey %>', // You can also use env variables
+                    distribution: '<%= aws.production.cloudfrontDistribution %>'
+                    //distribution: 'TESTING'
+                },
                 expand: true,
                 cwd: 'dist/',
                 src: '**/*.html',
@@ -501,10 +520,23 @@ module.exports = function (grunt) {
                     return src.slice(0, -5); // Remove the known .html extension.
                 }
             }
+        },
+        shell: {
+            launch: {
+                options: {
+                    env: {
+                        // I'm pretty sure that these keys don't actually help.
+                        // I think that it's pulling from my already installed
+                        // credentials, and not using these. But I'll leave this
+                        // in, because at some point this is what we'll have to do.
+                        AWS_ACCESS_KEY_ID: '<%= aws.production.AWSAccessKeyId %>',
+                        AWS_SECRET_ACCESS_KEY: '<%= aws.production.AWSSecretKey %>'
+                    }
+                },
+                command: 'aws s3 sync s3://preview.redninesensor.com/ s3://redninesensor.com/ --acl public-read --exclude robots.txt'
+                // --dryrun
+            }
         }
-
-        //  aws s3 sync s3://preview.redninesensor.com/ s3://redninesensor.com/ --exclude robots.txt
-        // --dryrun
     });
 
     grunt.registerTask('serve', ['build', 'connect:development', 'watch:service:build']);
@@ -542,5 +574,10 @@ module.exports = function (grunt) {
         'aws_s3:previewUploadStatic',
         'aws_s3:previewUploadPages',
         'invalidate_cloudfront:preview'
+    ]);
+
+    grunt.registerTask('deploy-production', [
+        'shell:launch',
+        'invalidate_cloudfront:production'
     ]);
 };

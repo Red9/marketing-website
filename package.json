@@ -29,6 +29,7 @@
     "grunt-newer": "1.1.x",
     "grunt-postcss": "0.4.x",
     "grunt-responsive-images": "0.1.x",
+    "grunt-shell": "^1.1.2",
     "grunt-uncss": "0.4.x",
     "grunt-usemin": "3.0.x",
     "grunt-wiredep": "2.0.x",
